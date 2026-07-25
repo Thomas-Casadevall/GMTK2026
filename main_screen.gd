@@ -5,29 +5,26 @@ extends Node2D
 var TOTAL_TIME: float = 5;
 
 var fenetre: float = 0.1;
-
-var list_space_scenes = []
-
-var space_screen_scene = preload("res://space_screen.tscn")
-
+var resize_factor = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	add_screen()
+	main_timer = get_node("main_timer")
+	GlobalWindowsHandler.available_panels.append(self)
+	new_rocket()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-
-func add_screen() -> void:
-	var scene = space_screen_scene.instantiate()
-	scene.rocket_exploded.connect(on_rocket_crashed)
-	list_space_scenes.append(scene)
-	scene.init_time(TOTAL_TIME, fenetre)
-	add_child(scene)
-	$beat.timeout.connect(scene.sync)
-	print("on ajoute une scene")
+func new_rocket() -> void:
+	var first_rocket_scene = GlobalWindowsHandler.add_screen()
+	
+	GlobalSignalHandler.connect("rocket_launched", on_rocket_launch)
+	main_timer.timeout.connect(first_rocket_scene.countdown)
+	add_child(first_rocket_scene)
+	GlobalWindowsHandler.taken_panels.append(self) # se déclare comme premier panel
 
 func _unhandled_input(event):
 	if event is InputEventKey:

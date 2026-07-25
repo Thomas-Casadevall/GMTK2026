@@ -3,6 +3,8 @@ extends Node2D
 var init_done: bool = false;
 var crashed: bool = false;
 
+var scene_resize_factor = 1
+
 signal rocket_launched
 signal rocket_exploded
 
@@ -19,6 +21,7 @@ var backgrounds := [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	count=1 
 	var background = backgrounds[randi() % backgrounds.size()]
 	$background.texture = background
 
