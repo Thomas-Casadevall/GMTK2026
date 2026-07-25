@@ -55,6 +55,7 @@ func add_screen():
 	panel_to_use.add_child(new_scene)
 	print("Added scene ", new_scene.name)
 	taken_panels.append(panel_to_use)
+	return new_scene
 
 func create_four_panels(factor):
 	print("  Creating 4 new panels with factor ", factor)

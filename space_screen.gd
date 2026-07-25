@@ -32,6 +32,7 @@ func _ready() -> void:
 	# timer signal plug
 	$Construction.timeout.connect(constructed)
 	$Restart.timeout.connect(start_construction)
+	print("rocket ready")	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
