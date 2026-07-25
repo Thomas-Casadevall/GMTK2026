@@ -1,8 +1,26 @@
 [gd_scene format=3 uid="uid://c1nxfkqbfsqdb"]
 
 [ext_resource type="Script" uid="uid://blwxlcrduv8ow" path="res://main_screen.gd" id="1_tjn2e"]
-[ext_resource type="AudioStream" uid="uid://deiph5u401x6e" path="res://entities/assets/audio/music/test_tracks/TEST_60bpm_BASE.ogg" id="2_w0p2i"]
+[ext_resource type="AudioStream" uid="uid://bjbidrylcaxy2" path="res://entities/assets/audio/music/test_tracks/LAYERTEST_metronome-60bpm.ogg" id="2_ue4rx"]
 [ext_resource type="Texture2D" uid="uid://c62cs0p6r37b0" path="res://entities/assets/icon.svg" id="3_7a4el"]
+[ext_resource type="AudioStream" uid="uid://e5gqaf3w10k0" path="res://entities/assets/audio/music/test_tracks/LAYERTEST_rocket1-60bpm-8s.ogg" id="3_sjiej"]
+[ext_resource type="AudioStream" uid="uid://8ml1b3sukeks" path="res://entities/assets/audio/music/test_tracks/LAYERTEST_rocket2-80bpm-6s.ogg" id="4_4sv2p"]
+[ext_resource type="AudioStream" uid="uid://woiu0eefddgx" path="res://entities/assets/audio/music/test_tracks/LAYERTEST_rocket3-95bpm-5s.ogg" id="5_0osx7"]
+[ext_resource type="AudioStream" uid="uid://bi0op33sspfyd" path="res://entities/assets/audio/music/test_tracks/LAYERTEST_rocket4-120bpm-4s.ogg" id="6_62wn8"]
+[ext_resource type="Script" uid="uid://04sx5ls8xf2s" path="res://layered_audio.gd" id="7_sjiej"]
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_4x25n"]
+stream_count = 5
+stream_0/stream = ExtResource("2_ue4rx")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("3_sjiej")
+stream_1/volume = 0.0
+stream_2/stream = ExtResource("4_4sv2p")
+stream_2/volume = 0.0
+stream_3/stream = ExtResource("5_0osx7")
+stream_3/volume = 0.0
+stream_4/stream = ExtResource("6_62wn8")
+stream_4/volume = 0.0
 
 [sub_resource type="Animation" id="Animation_7a4el"]
 length = 0.001
@@ -72,9 +90,11 @@ script = ExtResource("1_tjn2e")
 autostart = true
 ignore_time_scale = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=277144051]
-stream = ExtResource("2_w0p2i")
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=277144051]
+stream = SubResource("AudioStreamSynchronized_4x25n")
 autoplay = true
+script = ExtResource("7_sjiej")
+rocket_times = Array[float]([0.0, 1.0, 0.75, 0.625, 0.5])
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=81524074]
 position = Vector2(400, 2)
