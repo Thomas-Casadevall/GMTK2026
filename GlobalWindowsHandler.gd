@@ -1,6 +1,7 @@
 extends Node
 
 var space_screen_scene = preload("res://space_screen.tscn")
+var loading_texture = preload("res://entities/assets/images/Screenshot 2026-07-26 003520.png")
 
 var available_panels = []
 var taken_panels = []
@@ -67,16 +68,25 @@ func create_four_panels(factor):
 	var hbox1 = HBoxContainer.new()
 	hbox1.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	vbox.add_child(hbox1)
-	
 	var control1 = Control.new()
 	control1.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	control1.set_meta("resize_factor", factor + 1)
+	var sprite1 = Sprite2D.new()
+	sprite1.texture = loading_texture
+	sprite1.scale = Vector2(1.0/(factor*2),1.0/(factor*2))
+	sprite1.centered = false
 	hbox1.add_child(control1)
+	control1.add_child(sprite1)
 	available_panels.append(control1)
 	var control2 = Control.new()
+	var sprite2 = Sprite2D.new()
+	sprite2.texture = loading_texture
+	sprite2.scale = Vector2(1.0/(factor*2),1.0/(factor*2))
+	sprite2.centered = false
 	control2.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	control2.set_meta("resize_factor", factor + 1)
 	hbox1.add_child(control2)
+	control2.add_child(sprite2)
 	available_panels.append(control2)
 	
 	var hbox2 = HBoxContainer.new()
@@ -84,14 +94,24 @@ func create_four_panels(factor):
 	hbox2.size_flags_vertical = 3
 	
 	var control3 = Control.new()
+	var sprite3 = Sprite2D.new()
+	sprite3.texture = loading_texture
+	sprite3.scale = Vector2(1.0/(factor*2),1.0/(factor*2))
+	sprite3.centered = false
 	control3.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	control3.set_meta("resize_factor", factor + 1)
 	hbox2.add_child(control3)
+	control3.add_child(sprite3)
 	available_panels.append(control3)
 	var control4 = Control.new()
+	var sprite4 = Sprite2D.new()
+	sprite4.texture = loading_texture
+	sprite4.scale = Vector2(1.0/(factor*2),1.0/(factor*2))
+	sprite4.centered = false
 	control4.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	control4.set_meta("resize_factor", factor + 1)
 	hbox2.add_child(control4)
+	control4.add_child(sprite4)
 	available_panels.append(control4)
 	
 	print(vbox.name, " created :")
