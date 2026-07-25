@@ -7,7 +7,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	position.y -= SPEED * delta
-	if global_position.y <= -400:
+	if global_position.y <= -800:
 		set_process(false)
 		position = Vector2.ZERO
 

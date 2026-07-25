@@ -9,13 +9,13 @@
 script = ExtResource("1_tpb7v")
 
 [node name="turbo" type="Sprite2D" parent="." unique_id=315743173]
-position = Vector2(390, 358)
+position = Vector2(-1, -236)
 texture = ExtResource("1_r2l15")
 
 [node name="cabin" type="Sprite2D" parent="." unique_id=1064977363]
-position = Vector2(390, 359)
+position = Vector2(-1, -235)
 texture = ExtResource("2_tpb7v")
 
 [node name="hat" type="Sprite2D" parent="." unique_id=956678650]
-position = Vector2(390, 353)
+position = Vector2(-1, -241)
 texture = ExtResource("3_cum1y")
