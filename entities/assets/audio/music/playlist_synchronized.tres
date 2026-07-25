@@ -1,0 +1,20 @@
+[gd_resource type="AudioStreamSynchronized" format=3 uid="uid://m7eprgn015nx"]
+
+[ext_resource type="AudioStream" uid="uid://bjbidrylcaxy2" path="res://entities/assets/audio/music/test_tracks/LAYERTEST_metronome-60bpm.ogg" id="1_02kid"]
+[ext_resource type="AudioStream" uid="uid://e5gqaf3w10k0" path="res://entities/assets/audio/music/test_tracks/LAYERTEST_rocket1-60bpm-8s.ogg" id="2_r5hvh"]
+[ext_resource type="AudioStream" uid="uid://8ml1b3sukeks" path="res://entities/assets/audio/music/test_tracks/LAYERTEST_rocket2-80bpm-6s.ogg" id="3_n2fpt"]
+[ext_resource type="AudioStream" uid="uid://biori2wcpnxn4" path="res://entities/assets/audio/music/test_tracks/LAYERTEST_rocket3-95bpm-5s.ogg" id="4_3xnka"]
+[ext_resource type="AudioStream" uid="uid://bi0op33sspfyd" path="res://entities/assets/audio/music/test_tracks/LAYERTEST_rocket4-120bpm-4s.ogg" id="5_3jqar"]
+
+[resource]
+stream_count = 5
+stream_0/stream = ExtResource("1_02kid")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("2_r5hvh")
+stream_1/volume = -1.38
+stream_2/stream = ExtResource("3_n2fpt")
+stream_2/volume = -4.96
+stream_3/stream = ExtResource("4_3xnka")
+stream_3/volume = -2.58
+stream_4/stream = ExtResource("5_3jqar")
+stream_4/volume = -4.96
