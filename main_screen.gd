@@ -20,14 +20,13 @@ func _process(delta: float) -> void:
 	pass
 
 
-
 func add_screen() -> void:
 	var scene = space_screen_scene.instantiate()
 	GlobalSignalHandler.connect("on_rocket_launch", on_rocket_launch)
 	list_space_scenes.append(scene)
 	
 	add_child(scene)
-	main_timer.timeout.connect(scene.countdown)
+	main_timer.timeout.connect(scene.sync)
 	print("on ajoute une scene")
 
 func _unhandled_input(event):
