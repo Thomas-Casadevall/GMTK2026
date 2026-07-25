@@ -11,9 +11,16 @@ var is_crashed = true
 
 var is_synced = false
 
+var backgrounds := [
+	preload("res://entities/assets/images/bg/BG-var2.jpg"),
+	preload("res://entities/assets/images/bg/BG-var3.jpg"),
+	preload("res://entities/assets/images/bg/BG-var4.jpg")
+]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	var background = backgrounds[randi() % backgrounds.size()]
+	$background.texture = background
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
