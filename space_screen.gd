@@ -17,8 +17,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	var time = $COUNTDOWN.time_left
-	var decimals = 2 if time <= 4 else 0
-	$Countdown_container/Countdown_label.text = str(time).pad_decimals(decimals)
+	$Countdown_container/Countdown_label.text = str(time).pad_decimals(0)
 
 
 func sync() -> void:
@@ -34,7 +33,8 @@ func space_key_pressed():
 		$Countdown_container/Countdown_label.text = "Launched !"
 		is_launched = true
 		GlobalSignalHandler.emit_signal("rocket_launched")
-		
+		$ground_pos/Sprite_fusee.launch()
+
 
 func _on_countdown_timeout() -> void:
 	print("Game over")

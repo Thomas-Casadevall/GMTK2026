@@ -34,7 +34,6 @@ func _unhandled_input(event):
 		if event.pressed and event.keycode == KEY_SPACE:
 			for scene in list_space_scenes:
 				scene.space_key_pressed()
-			
 
 
 func on_rocket_launch():
