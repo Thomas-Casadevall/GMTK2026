@@ -37,6 +37,7 @@ func sync() -> void:
 	if is_synced or !init_done:
 		return
 	$COUNTDOWN.start()
+	$ground_pos/Rocket/AnimatedSprite2D.play()
 	is_synced = true
 
 
