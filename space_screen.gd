@@ -1,38 +1,44 @@
 extends Node2D
 
-var count:int;
+var TOTAL_TIME: float = 6;
 
 signal rocket_launched
 
 var is_launched = false
 var is_crashed = true
 
+var is_synced = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	count = 5;
-	pass # Replace with function body.
+	$COUNTDOWN.wait_time = TOTAL_TIME
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _process(_delta: float) -> void:
+	var time = $COUNTDOWN.time_left
+	var decimals = 2 if time <= 4 else 0
+	$Countdown_container/Countdown_label.text = str(time).pad_decimals(decimals)
 
-func countdown() -> void:
-	if is_launched == false:
-		count -=1;
-		$Countdown_container/Countdown_label.text = str(count)
-		print("je descend de 1 !, reste : ", count)
-		print(self.get_instance_id())
-		
-		if count < 0:
-			is_crashed = true
-			$Countdown_container/Countdown_label.text = "Crashed !"
+
+func sync() -> void:
+	if is_synced:
+		return
+	$COUNTDOWN.start()
+	is_synced = true
+
 
 func space_key_pressed() -> bool:
 	print("scene received space")
-	if count == 0:
+	if $COUNTDOWN.time_left < 1:
 		$Countdown_container/Countdown_label.text = "Launched !"
 		is_launched = true
 		GlobalSignalHandler.emit_signal("rocket_launched")
 		return true
 	return false
+		
+
+func _on_countdown_timeout() -> void:
+	print("Game over")
+	is_crashed = true
+	$Countdown_container/Countdown_label.text = "Crashed !"
