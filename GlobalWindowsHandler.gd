@@ -21,7 +21,7 @@ func add_screen():
 			if scene.scene_resize_factor < scene_to_split.scene_resize_factor:
 				scene_to_split = scene
 		var factor = scene_to_split.scene_resize_factor
-		
+		var scaling_factor = 2/(pow(2,factor+1))
 		# On récupère le panel de la scene à split
 		var panel_scene_to_split = scene_to_split.get_parent()
 		# On lui assigne une nouvelle grille en 2x2
@@ -30,6 +30,7 @@ func add_screen():
 		var new_panel_to_use = available_panels.pop_front()
 		# On met l'ancienne scene à split dans ce panel
 		scene_to_split.reparent(new_panel_to_use)
+		scene_to_split.scale = Vector2(scaling_factor, scaling_factor)
 		# L'ancienne scene se fait réduire
 		scene_to_split.scene_resize_factor +=1
 		# On considère ce pannel comme pris
@@ -43,18 +44,17 @@ func add_screen():
 		factor_of_new_scene =  panel_to_use.get_meta("resize_factor")
 	else:
 		factor_of_new_scene = panel_to_use.resize_factor
-	if factor_of_new_scene < 3:
-		print("New factor ",factor_of_new_scene)
-		new_scene.scene_resize_factor = factor_of_new_scene
-		GlobalVariables.list_space_scenes.append(new_scene)
-		print("Will use panel ",panel_to_use.name)
-		panel_to_use.add_child(new_scene)
-		print("Added scene ", new_scene.name)
-		taken_panels.append(panel_to_use)
-		
-		return new_scene
-	else:
-		return null
+	print("New factor ",factor_of_new_scene)
+	var scaling_factor = 2/(pow(2,factor_of_new_scene))
+	print("Scaling by ", scaling_factor)
+	
+	new_scene.scale = Vector2(scaling_factor, scaling_factor)
+	new_scene.scene_resize_factor = factor_of_new_scene
+	GlobalVariables.list_space_scenes.append(new_scene)
+	print("Will use panel ",panel_to_use.name)
+	panel_to_use.add_child(new_scene)
+	print("Added scene ", new_scene.name)
+	taken_panels.append(panel_to_use)
 
 func create_four_panels(factor):
 	print("  Creating 4 new panels with factor ", factor)
