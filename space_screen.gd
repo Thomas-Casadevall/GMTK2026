@@ -1,15 +1,12 @@
 extends Node2D
+signal rocket_exploded
 
 var init_done: bool = false;
 var crashed: bool = false;
 
 var scene_resize_factor = 1
-
-signal rocket_exploded
-
 var is_launched = false
-var is_crashed = true
-
+var is_crashed = false
 var is_synced = false
 
 var backgrounds := [
@@ -25,6 +22,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	if is_crashed:
+		return
 	var time = $COUNTDOWN.wait_time if $COUNTDOWN.is_stopped() else $COUNTDOWN.time_left
 	$Countdown_container/Countdown_label.text = str(floor(time)).pad_decimals(0)
 
@@ -41,7 +40,6 @@ func sync() -> void:
 	$ground_pos/Rocket/AnimatedSprite2D.play()
 	is_synced = true
 
-
 func space_key_pressed() -> bool:
 	print("scene received space")
 	print($COUNTDOWN.time_left)
@@ -56,14 +54,11 @@ func space_key_pressed() -> bool:
 		return true
 	return false
 
-
 func _on_countdown_timeout() -> void:
 	$Timeout_fenetre.start()
-
 
 func _on_timeout_fenetre_timeout() -> void:
 	rocket_exploded.emit()
 	print("Game over fenetre")
 	is_crashed = true
 	$Countdown_container/Countdown_label.text = "Crashed !"
-	

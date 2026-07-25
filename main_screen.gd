@@ -1,9 +1,6 @@
 extends Node2D
 
-#var screens: Array[Node2D]
-
 var TOTAL_TIME: float = 5;
-
 var fenetre: float = 0.1;
 var resize_factor = 1
 
@@ -24,7 +21,6 @@ func add_screen():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	
 
 func _unhandled_input(event):
 	if event is InputEventKey:
@@ -49,7 +45,6 @@ func on_rocket_crashed():
 
 func game_over(cause):
 	print ("GAME OVER : ", cause)
-
 
 func _on_beat_timeout() -> void:
 	$AnimationPlayer.play("beat_visualization")
