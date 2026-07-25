@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c1nxfkqbfsqdb"]
 
 [ext_resource type="Script" uid="uid://blwxlcrduv8ow" path="res://main_screen.gd" id="1_tjn2e"]
+[ext_resource type="AudioStream" uid="uid://deiph5u401x6e" path="res://entities/assets/audio/music/test_tracks/TEST_60bpm_BASE.ogg" id="2_w0p2i"]
 
 [node name="main_screen" type="Node2D" unique_id=1734685476]
 script = ExtResource("1_tjn2e")
@@ -8,3 +9,7 @@ script = ExtResource("1_tjn2e")
 [node name="main_timer" type="Timer" parent="." unique_id=2122025385]
 autostart = true
 ignore_time_scale = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=277144051]
+stream = ExtResource("2_w0p2i")
+autoplay = true

@@ -2,11 +2,11 @@ extends Node2D
 
 #var screens: Array[Node2D]
 
-var TOTAL_TIME:float = 5;
+var TOTAL_TIME: float = 5;
 
-var main_timer:Timer;
+var main_timer: Timer;
 
-var fenetre:float = 0.1;
+var fenetre: float = 0.1;
 
 var list_space_scenes = []
 
