@@ -1,20 +1,26 @@
 [gd_resource type="AudioStreamSynchronized" format=3 uid="uid://m7eprgn015nx"]
 
-[ext_resource type="AudioStream" uid="uid://bjbidrylcaxy2" path="res://entities/assets/audio/music/test_tracks/LAYERTEST_metronome-60bpm.ogg" id="1_02kid"]
-[ext_resource type="AudioStream" uid="uid://e5gqaf3w10k0" path="res://entities/assets/audio/music/test_tracks/LAYERTEST_rocket1-60bpm-8s.ogg" id="2_r5hvh"]
-[ext_resource type="AudioStream" uid="uid://8ml1b3sukeks" path="res://entities/assets/audio/music/test_tracks/LAYERTEST_rocket2-80bpm-6s.ogg" id="3_n2fpt"]
-[ext_resource type="AudioStream" uid="uid://biori2wcpnxn4" path="res://entities/assets/audio/music/test_tracks/LAYERTEST_rocket3-95bpm-5s.ogg" id="4_3xnka"]
-[ext_resource type="AudioStream" uid="uid://bi0op33sspfyd" path="res://entities/assets/audio/music/test_tracks/LAYERTEST_rocket4-120bpm-4s.ogg" id="5_3jqar"]
+[ext_resource type="AudioStream" uid="uid://dbrng7joinw7a" path="res://entities/assets/audio/music/base_track.ogg" id="1_n2fpt"]
+[ext_resource type="AudioStream" uid="uid://bg55ta8dxvrh2" path="res://entities/assets/audio/music/rhythm_1_2s.ogg" id="2_3xnka"]
+[ext_resource type="AudioStream" uid="uid://bky8q3wff5mex" path="res://entities/assets/audio/music/rhythm_2_1.5s.ogg" id="3_3jqar"]
+[ext_resource type="AudioStream" uid="uid://dd8knud6pjgic" path="res://entities/assets/audio/music/rhythm_3_1s.ogg" id="4_yulhe"]
+[ext_resource type="AudioStream" uid="uid://dpglrtjg1syg3" path="res://entities/assets/audio/music/rhythm_4_0.75s.ogg" id="5_qsf4g"]
+[ext_resource type="AudioStream" uid="uid://dppddbuklmxsc" path="res://entities/assets/audio/music/rhythm_5_0.5s.ogg" id="6_g5qmk"]
+[ext_resource type="AudioStream" uid="uid://c8n3yynkkqlp1" path="res://entities/assets/audio/music/rhythm_6_0.375s.ogg" id="7_yas5m"]
 
 [resource]
-stream_count = 5
-stream_0/stream = ExtResource("1_02kid")
+stream_count = 7
+stream_0/stream = ExtResource("1_n2fpt")
 stream_0/volume = 0.0
-stream_1/stream = ExtResource("2_r5hvh")
+stream_1/stream = ExtResource("2_3xnka")
 stream_1/volume = -1.38
-stream_2/stream = ExtResource("3_n2fpt")
+stream_2/stream = ExtResource("3_3jqar")
 stream_2/volume = -4.96
-stream_3/stream = ExtResource("4_3xnka")
+stream_3/stream = ExtResource("4_yulhe")
 stream_3/volume = -2.58
-stream_4/stream = ExtResource("5_3jqar")
+stream_4/stream = ExtResource("5_qsf4g")
 stream_4/volume = -4.96
+stream_5/stream = ExtResource("6_g5qmk")
+stream_5/volume = 0.0
+stream_6/stream = ExtResource("7_yas5m")
+stream_6/volume = 0.0
