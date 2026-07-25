@@ -3,7 +3,8 @@ extends Node2D
 var init_done: bool = false;
 var crashed: bool = false;
 
-signal rocket_launched
+var scene_resize_factor = 1
+
 signal rocket_exploded
 
 var is_launched = false
@@ -19,6 +20,7 @@ var backgrounds := [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	count=1 
 	var background = backgrounds[randi() % backgrounds.size()]
 	$background.texture = background
 
@@ -45,12 +47,13 @@ func space_key_pressed() -> bool:
 	print("scene received space")
 	print($COUNTDOWN.time_left)
 	if $COUNTDOWN.time_left < 1.0:
-		print("rocket envoyee")
-		$Countdown_container/Countdown_label.text = "Launched !"
-		is_launched = true
-		GlobalSignalHandler.emit_signal("rocket_launched")
-		#$ground_pos/Sprite_fusee.launch()
-		$ground_pos/Rocket.launch()
+		if is_launched == false:
+			print("rocket envoyee")
+			$Countdown_container/Countdown_label.text = "Launched !"
+			GlobalSignalHandler.emit_signal("rocket_launched")
+			is_launched = true
+			#$ground_pos/Sprite_fusee.launch()
+			$ground_pos/Rocket.launch()
 		return true
 	return false
 

@@ -5,29 +5,21 @@ extends Node2D
 var TOTAL_TIME: float = 5;
 
 var fenetre: float = 0.1;
-
-var list_space_scenes = []
-
-var space_screen_scene = preload("res://space_screen.tscn")
-
+var resize_factor = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	add_screen()
+	GlobalSignalHandler.rocket_launched.connect(on_rocket_launched)	
+	
+	GlobalWindowsHandler.available_panels.append(self)
+	var first_rocket_scene = GlobalWindowsHandler.add_screen()
+	
+	$beat.timeout.connect(first_rocket_scene.sync)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-
-func add_screen() -> void:
-	var scene = space_screen_scene.instantiate()
-	scene.rocket_exploded.connect(on_rocket_crashed)
-	list_space_scenes.append(scene)
-	scene.init_time(TOTAL_TIME, fenetre)
-	add_child(scene)
-	$beat.timeout.connect(scene.sync)
-	print("on ajoute une scene")
+	
 
 func _unhandled_input(event):
 	if event is InputEventKey:
@@ -35,7 +27,7 @@ func _unhandled_input(event):
 			var at_least_one_launched:bool = false;
 			# si c'est dans la fenetre on balance au scenes filles
 			if $beat.time_left < fenetre or $beat.time_left > 1 - fenetre:
-				for scene in list_space_scenes:
+				for scene in GlobalVariables.list_space_scenes:
 					if scene.space_key_pressed():
 						at_least_one_launched = true
 				if (!at_least_one_launched):
@@ -43,10 +35,10 @@ func _unhandled_input(event):
 			else :
 				game_over("out of rythm")
 
+func on_rocket_launched():
+	print("LAUNCHED")
+	GlobalWindowsHandler.add_screen()
 
-func on_rocket_launch():
-	print("Main receveive : rocket launched")
-	
 func on_rocket_crashed():
 	game_over("no rocket to launch !")
 
