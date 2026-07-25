@@ -46,10 +46,10 @@ func add_screen():
 	var panel_to_use = available_panels.pop_front()
 	var new_scene = space_screen_scene.instantiate()
 	var factor_of_new_scene
-	if panel_to_use.get_meta("resize_factor") == null:
-		factor_of_new_scene = panel_to_use.resize_factor
-	else:
+	if panel_to_use.has_meta("resize_factor"):
 		factor_of_new_scene =  panel_to_use.get_meta("resize_factor")
+	else:
+		factor_of_new_scene = panel_to_use.resize_factor
 		
 	print("New factor ",factor_of_new_scene)
 	new_scene.scene_resize_factor = factor_of_new_scene

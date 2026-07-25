@@ -9,22 +9,17 @@ var resize_factor = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	main_timer = get_node("main_timer")
+	GlobalSignalHandler.rocket_launched.connect(on_rocket_launched)	
+	
 	GlobalWindowsHandler.available_panels.append(self)
-	new_rocket()
-	pass
+	var first_rocket_scene = GlobalWindowsHandler.add_screen()
+	
+	$beat.timeout.connect(first_rocket_scene.sync)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-func new_rocket() -> void:
-	var first_rocket_scene = GlobalWindowsHandler.add_screen()
 	
-	GlobalSignalHandler.connect("rocket_launched", on_rocket_launch)
-	main_timer.timeout.connect(first_rocket_scene.countdown)
-	add_child(first_rocket_scene)
-	GlobalWindowsHandler.taken_panels.append(self) # se déclare comme premier panel
 
 func _unhandled_input(event):
 	if event is InputEventKey:
@@ -32,7 +27,7 @@ func _unhandled_input(event):
 			var at_least_one_launched:bool = false;
 			# si c'est dans la fenetre on balance au scenes filles
 			if $beat.time_left < fenetre or $beat.time_left > 1 - fenetre:
-				for scene in list_space_scenes:
+				for scene in GlobalVariables.list_space_scenes:
 					if scene.space_key_pressed():
 						at_least_one_launched = true
 				if (!at_least_one_launched):
@@ -40,10 +35,10 @@ func _unhandled_input(event):
 			else :
 				game_over("out of rythm")
 
+func on_rocket_launched():
+	print("LAUNCHED")
+	#GlobalWindowsHandler.add_screen()
 
-func on_rocket_launch():
-	print("Main receveive : rocket launched")
-	
 func on_rocket_crashed():
 	game_over("no rocket to launch !")
 

@@ -5,7 +5,6 @@ var crashed: bool = false;
 
 var scene_resize_factor = 1
 
-signal rocket_launched
 signal rocket_exploded
 
 var is_launched = false
