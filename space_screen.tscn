@@ -16,3 +16,8 @@ alignment = 1
 
 [node name="Countdown_label" type="Label" parent="Countdown_container" unique_id=13551825]
 layout_mode = 2
+text = "0.0"
+
+[node name="COUNTDOWN" type="Timer" parent="." unique_id=1705806092]
+
+[connection signal="timeout" from="COUNTDOWN" to="." method="_on_countdown_timeout"]
