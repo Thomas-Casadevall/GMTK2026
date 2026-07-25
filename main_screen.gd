@@ -4,8 +4,6 @@ extends Node2D
 
 var TOTAL_TIME: float = 5;
 
-var main_timer: Timer;
-
 var fenetre: float = 0.1;
 
 var list_space_scenes = []
@@ -15,8 +13,6 @@ var space_screen_scene = preload("res://space_screen.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	main_timer = get_node("main_timer")
-	#GlobalSignalHandler.rocket_exploded.connect(on_rocket_crashed)
 	add_screen()
 	pass
 
@@ -27,12 +23,11 @@ func _process(delta: float) -> void:
 
 func add_screen() -> void:
 	var scene = space_screen_scene.instantiate()
-	#GlobalSignalHandler.connect("on_rocket_launch", on_rocket_launch)
 	scene.rocket_exploded.connect(on_rocket_crashed)
 	list_space_scenes.append(scene)
 	scene.init_time(TOTAL_TIME, fenetre)
 	add_child(scene)
-	main_timer.timeout.connect(scene.sync)
+	$beat.timeout.connect(scene.sync)
 	print("on ajoute une scene")
 
 func _unhandled_input(event):
@@ -40,7 +35,7 @@ func _unhandled_input(event):
 		if event.pressed and event.keycode == KEY_SPACE:
 			var at_least_one_launched:bool = false;
 			# si c'est dans la fenetre on balance au scenes filles
-			if main_timer.time_left < fenetre or main_timer.time_left > 1 - fenetre :
+			if $beat.time_left < fenetre or $beat.time_left > 1 - fenetre:
 				for scene in list_space_scenes:
 					if scene.space_key_pressed():
 						at_least_one_launched = true
@@ -55,8 +50,10 @@ func on_rocket_launch():
 	
 func on_rocket_crashed():
 	game_over("no rocket to launch !")
-	
 
-	
 func game_over(cause):
 	print ("GAME OVER : ", cause)
+
+
+func _on_beat_timeout() -> void:
+	$AnimationPlayer.play("beat_visualization")

@@ -1,7 +1,5 @@
 extends Node2D
 
-var TOTAL_TIME: float = 6;
-var FENETRE: float = 0.1;
 var init_done: bool = false;
 var crashed: bool = false;
 
@@ -15,21 +13,18 @@ var is_synced = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$COUNTDOWN.wait_time = TOTAL_TIME
-	$Countdown_container/Countdown_label.text = str(TOTAL_TIME)
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	var time = $COUNTDOWN.time_left
-	$Countdown_container/Countdown_label.text = str(time).pad_decimals(0)
+	$Countdown_container/Countdown_label.text = str(floor(time))
 
-func init_time(_time :int, _fenetre :int) -> void:
-	TOTAL_TIME = _time
-	FENETRE = _fenetre
-	$COUNTDOWN.wait_time = TOTAL_TIME
-	$Timeout_fenetre.wait_time = _fenetre
-	$Countdown_container/Countdown_label.text = str(TOTAL_TIME)
+func init_time(time :int, fenetre :int) -> void:
+	$COUNTDOWN.wait_time = time
+	$Timeout_fenetre.wait_time = fenetre
+	$Countdown_container/Countdown_label.text = str(time)
 	init_done = true;
 
 func sync() -> void:
@@ -58,7 +53,6 @@ func _on_countdown_timeout() -> void:
 
 
 func _on_timeout_fenetre_timeout() -> void:
-
 	rocket_exploded.emit()
 	print("Game over fenetre")
 	is_crashed = true
