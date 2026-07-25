@@ -16,6 +16,9 @@ func _ready() -> void:
 func start_rocket_countdown(rocket_num : int) -> void:
 	var countdown_max : int = 8
 	var countdown_num : int = countdown_max
+	var stream_timing : float = rocket_times[rocket_num]
+
+	#get stream playback time, check the mod against it's duration, and once it hits a 0 mod go on
 	music_player.set_sync_stream_volume(rocket_num, 0) #brings the current rocket music track up
 	while countdown_num > countdown_max /2: #I suspect this section should be in the individual rocket's script, not here
 		# use a timer to count up to the time in rocket_times[rocket_num]

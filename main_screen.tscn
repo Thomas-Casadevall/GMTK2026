@@ -14,13 +14,13 @@ stream_count = 5
 stream_0/stream = ExtResource("2_ue4rx")
 stream_0/volume = 0.0
 stream_1/stream = ExtResource("3_sjiej")
-stream_1/volume = 0.0
+stream_1/volume = -1.38
 stream_2/stream = ExtResource("4_4sv2p")
-stream_2/volume = 0.0
+stream_2/volume = -4.96
 stream_3/stream = ExtResource("5_0osx7")
-stream_3/volume = 0.0
+stream_3/volume = -2.58
 stream_4/stream = ExtResource("6_62wn8")
-stream_4/volume = 0.0
+stream_4/volume = -4.96
 
 [sub_resource type="Animation" id="Animation_7a4el"]
 length = 0.001
