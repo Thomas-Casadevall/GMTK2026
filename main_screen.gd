@@ -1,11 +1,12 @@
 extends Node2D
 
-var TOTAL_TIME: float = 5;
+var TOTAL_TIME: float = 6;
 var fenetre: float = 0.1;
 var resize_factor = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print("READY")
 	GlobalSignalHandler.rocket_launched.connect(on_rocket_launched)	
 	GlobalWindowsHandler.available_panels.append(self)
 	add_screen()
@@ -15,7 +16,7 @@ func add_screen():
 	if rocket_scene == null:
 		return  # No sceen created :(
 	
-	rocket_scene.init_time(TOTAL_TIME, fenetre)
+	rocket_scene.init_time(TOTAL_TIME, 1, fenetre, 2)
 	$beat.timeout.connect(rocket_scene.sync)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

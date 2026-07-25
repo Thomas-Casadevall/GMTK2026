@@ -33,5 +33,11 @@ one_shot = true
 [node name="Timeout_fenetre" type="Timer" parent="." unique_id=433100304]
 one_shot = true
 
+[node name="Restart" type="Timer" parent="." unique_id=1829629830]
+one_shot = true
+
+[node name="Construction" type="Timer" parent="." unique_id=215257377]
+one_shot = true
+
 [connection signal="timeout" from="COUNTDOWN" to="." method="_on_countdown_timeout"]
 [connection signal="timeout" from="Timeout_fenetre" to="." method="_on_timeout_fenetre_timeout"]
