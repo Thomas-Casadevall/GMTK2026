@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c1nxfkqbfsqdb"]
+
+[ext_resource type="Script" uid="uid://blwxlcrduv8ow" path="res://main_screen.gd" id="1_tjn2e"]
+
+[node name="main_screen" type="Node2D" unique_id=1734685476]
+script = ExtResource("1_tjn2e")
+
+[node name="main_timer" type="Timer" parent="." unique_id=2122025385]
+autostart = true
+ignore_time_scale = true

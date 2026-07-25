@@ -8,3 +8,11 @@ script = ExtResource("1_wkyds")
 
 [node name="Sprite_fusee" type="Sprite2D" parent="." unique_id=1442090677]
 texture = ExtResource("2_7tajh")
+
+[node name="Countdown_container" type="HBoxContainer" parent="." unique_id=1108685891]
+offset_right = 794.0
+offset_bottom = 110.0
+alignment = 1
+
+[node name="Countdown_label" type="Label" parent="Countdown_container" unique_id=13551825]
+layout_mode = 2
