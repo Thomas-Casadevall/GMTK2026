@@ -50,16 +50,16 @@ func add_screen():
 		factor_of_new_scene =  panel_to_use.get_meta("resize_factor")
 	else:
 		factor_of_new_scene = panel_to_use.resize_factor
+	if factor_of_new_scene < 3:
+		print("New factor ",factor_of_new_scene)
+		new_scene.scene_resize_factor = factor_of_new_scene
+		GlobalVariables.list_space_scenes.append(new_scene)
+		print("Will use panel ",panel_to_use.name)
+		panel_to_use.add_child(new_scene)
+		print("Added scene ", new_scene.name)
+		taken_panels.append(panel_to_use)
 		
-	print("New factor ",factor_of_new_scene)
-	new_scene.scene_resize_factor = factor_of_new_scene
-	GlobalVariables.list_space_scenes.append(new_scene)
-	print("Will use panel ",panel_to_use.name)
-	panel_to_use.add_child(new_scene)
-	print("Added scene ", new_scene.name)
-	taken_panels.append(panel_to_use)
-	
-	return new_scene
+		return new_scene
 
 func create_four_panels(factor):
 	print("  Creating 4 new panels with factor ", factor)
@@ -67,7 +67,6 @@ func create_four_panels(factor):
 	var vbox = VBoxContainer.new()
 	# Il faut lui mettre la taille de sa node
 	vbox.size = Vector2(800/factor,800/factor)
-	add_child(vbox)
 	
 	var hbox1 = HBoxContainer.new()
 	hbox1.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -98,5 +97,11 @@ func create_four_panels(factor):
 	control4.set_meta("resize_factor", factor + 1)
 	hbox2.add_child(control4)
 	available_panels.append(control4)
+	
+	print(vbox.name, " created :")
+	print(" - ", control1.name)
+	print(" - ", control2.name)
+	print(" - ", control3.name)
+	print(" - ", control4.name)
 	
 	return vbox

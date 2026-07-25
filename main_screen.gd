@@ -37,7 +37,7 @@ func _unhandled_input(event):
 
 func on_rocket_launched():
 	print("LAUNCHED")
-	#GlobalWindowsHandler.add_screen()
+	GlobalWindowsHandler.add_screen()
 
 func on_rocket_crashed():
 	game_over("no rocket to launch !")
