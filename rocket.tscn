@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cw1b4se34kfvb"]
+
+[ext_resource type="Texture2D" uid="uid://cs7jhpgpbv31x" path="res://entities/assets/images/rocket/ROCKET_Turbo.png" id="1_r2l15"]
+[ext_resource type="Script" uid="uid://cvwrym3ficbly" path="res://rocket.gd" id="1_tpb7v"]
+[ext_resource type="Texture2D" uid="uid://ytalpgnmbis1" path="res://entities/assets/images/rocket/ROCKET_Cabin.png" id="2_tpb7v"]
+[ext_resource type="Texture2D" uid="uid://dj0m0ddgj8rpl" path="res://entities/assets/images/rocket/ROCKET_Hat.png" id="3_cum1y"]
+
+[node name="Rocket" type="Node2D" unique_id=829483439]
+script = ExtResource("1_tpb7v")
+
+[node name="turbo" type="Sprite2D" parent="." unique_id=315743173]
+position = Vector2(390, 358)
+texture = ExtResource("1_r2l15")
+
+[node name="cabin" type="Sprite2D" parent="." unique_id=1064977363]
+position = Vector2(390, 359)
+texture = ExtResource("2_tpb7v")
+
+[node name="hat" type="Sprite2D" parent="." unique_id=956678650]
+position = Vector2(390, 353)
+texture = ExtResource("3_cum1y")

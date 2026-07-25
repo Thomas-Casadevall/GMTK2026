@@ -47,7 +47,8 @@ func space_key_pressed() -> bool:
 		$Countdown_container/Countdown_label.text = "Launched !"
 		is_launched = true
 		GlobalSignalHandler.emit_signal("rocket_launched")
-		$ground_pos/Sprite_fusee.launch()
+		#$ground_pos/Sprite_fusee.launch()
+		$ground_pos/Rocket.launch()
 		return true
 	return false
 

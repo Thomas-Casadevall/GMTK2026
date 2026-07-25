@@ -1,20 +1,28 @@
 [gd_scene format=3 uid="uid://buywpe6ek1v16"]
 
 [ext_resource type="Script" uid="uid://0trexfng4sdw" path="res://space_screen.gd" id="1_wkyds"]
-[ext_resource type="Texture2D" uid="uid://c62cs0p6r37b0" path="res://entities/assets/icon.svg" id="2_7tajh"]
+[ext_resource type="Texture2D" uid="uid://c7uecfqffa6cb" path="res://entities/assets/images/rocket/ROCKET_Full.png" id="2_7tajh"]
+[ext_resource type="Texture2D" uid="uid://davkbowxpww6l" path="res://entities/assets/images/bg/BG-var2.jpg" id="2_cvb50"]
 [ext_resource type="Script" uid="uid://dh11cjl7ft7l2" path="res://sprite_fusee.gd" id="3_7tajh"]
+[ext_resource type="PackedScene" uid="uid://cw1b4se34kfvb" path="res://rocket.tscn" id="5_ttsuj"]
 
 [node name="space_screen" type="Node2D" unique_id=1275064]
 script = ExtResource("1_wkyds")
 
+[node name="background" type="Sprite2D" parent="." unique_id=1463751527]
+position = Vector2(400, 400)
+texture = ExtResource("2_cvb50")
+
 [node name="ground_pos" type="Marker2D" parent="." unique_id=924667353]
-position = Vector2(395, 628)
+position = Vector2(0, 100)
 
 [node name="Sprite_fusee" type="Sprite2D" parent="ground_pos" unique_id=1442090677]
-position = Vector2(2, -1)
-scale = Vector2(0.57872903, 1.4068652)
+visible = false
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_7tajh")
 script = ExtResource("3_7tajh")
+
+[node name="Rocket" parent="ground_pos" unique_id=829483439 instance=ExtResource("5_ttsuj")]
 
 [node name="Countdown_container" type="HBoxContainer" parent="." unique_id=1108685891]
 offset_right = 794.0
