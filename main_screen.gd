@@ -38,6 +38,7 @@ func _unhandled_input(event):
 
 func on_rocket_launched():
 	print("LAUNCHED")
+	#await get_tree().create_timer(0.5).timeout
 	add_screen()
 
 func on_rocket_crashed():
