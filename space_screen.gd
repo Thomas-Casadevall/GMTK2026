@@ -20,7 +20,6 @@ var backgrounds := [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	count=1 
 	var background = backgrounds[randi() % backgrounds.size()]
 	$background.texture = background
 
