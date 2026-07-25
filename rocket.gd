@@ -1,6 +1,6 @@
 extends Node2D
 
-const SPEED := 400
+const SPEED := 800
 
 func _ready() -> void:
 	reset()
