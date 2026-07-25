@@ -10,11 +10,16 @@ var resize_factor = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GlobalSignalHandler.rocket_launched.connect(on_rocket_launched)	
-	
 	GlobalWindowsHandler.available_panels.append(self)
-	var first_rocket_scene = GlobalWindowsHandler.add_screen()
+	add_screen()
+
+func add_screen():
+	var rocket_scene = GlobalWindowsHandler.add_screen()
+	if rocket_scene == null:
+		return  # No sceen created :(
 	
-	$beat.timeout.connect(first_rocket_scene.sync)
+	rocket_scene.init_time(TOTAL_TIME, fenetre)
+	$beat.timeout.connect(rocket_scene.sync)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -37,7 +42,7 @@ func _unhandled_input(event):
 
 func on_rocket_launched():
 	print("LAUNCHED")
-	GlobalWindowsHandler.add_screen()
+	add_screen()
 
 func on_rocket_crashed():
 	game_over("no rocket to launch !")

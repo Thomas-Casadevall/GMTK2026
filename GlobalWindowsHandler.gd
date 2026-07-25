@@ -7,15 +7,9 @@ var taken_panels = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	set_process(false)
 	
 func add_screen():
-	print("add_screen")
-	
 	# If there is no more panel available, create some and put old scene in 
 	if len(available_panels) == 0:
 		print("besoin de rajouter des panneaux")
@@ -41,7 +35,6 @@ func add_screen():
 		# On considère ce pannel comme pris
 		taken_panels.append(new_panel_to_use)
 		
-	
 	# Maintenant qu'il y a des panneaux dispos
 	var panel_to_use = available_panels.pop_front()
 	var new_scene = space_screen_scene.instantiate()
@@ -60,6 +53,8 @@ func add_screen():
 		taken_panels.append(panel_to_use)
 		
 		return new_scene
+	else:
+		return null
 
 func create_four_panels(factor):
 	print("  Creating 4 new panels with factor ", factor)

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c62cs0p6r37b0" path="res://entities/assets/icon.svg" id="3_7a4el"]
 [ext_resource type="AudioStream" uid="uid://e5gqaf3w10k0" path="res://entities/assets/audio/music/test_tracks/LAYERTEST_rocket1-60bpm-8s.ogg" id="3_sjiej"]
 [ext_resource type="AudioStream" uid="uid://8ml1b3sukeks" path="res://entities/assets/audio/music/test_tracks/LAYERTEST_rocket2-80bpm-6s.ogg" id="4_4sv2p"]
-[ext_resource type="AudioStream" uid="uid://woiu0eefddgx" path="res://entities/assets/audio/music/test_tracks/LAYERTEST_rocket3-95bpm-5s.ogg" id="5_0osx7"]
+[ext_resource type="AudioStream" uid="uid://woiu0eefddgx" path="res://entities/assets/audio/music/test_tracks/LAYERTEST_rocket3-80bpm-5s.ogg" id="5_0osx7"]
 [ext_resource type="AudioStream" uid="uid://bi0op33sspfyd" path="res://entities/assets/audio/music/test_tracks/LAYERTEST_rocket4-120bpm-4s.ogg" id="6_62wn8"]
 [ext_resource type="Script" uid="uid://04sx5ls8xf2s" path="res://layered_audio.gd" id="7_sjiej"]
 
