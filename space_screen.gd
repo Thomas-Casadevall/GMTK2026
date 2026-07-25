@@ -2,6 +2,8 @@ extends Node2D
 
 var count:int;
 
+signal rocket_launched
+
 var is_launched = false
 var is_crashed = true
 
@@ -31,4 +33,5 @@ func space_key_pressed():
 	if count == 0:
 		$Countdown_container/Countdown_label.text = "Launched !"
 		is_launched = true
+		GlobalSignalHandler.emit_signal("rocket_launched")
 		
