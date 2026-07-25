@@ -15,11 +15,10 @@ var is_synced = false
 func _ready() -> void:
 	pass
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	var time = $COUNTDOWN.time_left
-	$Countdown_container/Countdown_label.text = str(floor(time))
+	var time = $COUNTDOWN.wait_time if $COUNTDOWN.is_stopped() else $COUNTDOWN.time_left
+	$Countdown_container/Countdown_label.text = str(floor(time)).pad_decimals(0)
 
 func init_time(time :int, fenetre :int) -> void:
 	$COUNTDOWN.wait_time = time

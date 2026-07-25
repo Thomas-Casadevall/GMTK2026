@@ -14,7 +14,6 @@ var space_screen_scene = preload("res://space_screen.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_screen()
-	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
