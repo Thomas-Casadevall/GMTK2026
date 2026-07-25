@@ -28,10 +28,11 @@ func countdown() -> void:
 			is_crashed = true
 			$Countdown_container/Countdown_label.text = "Crashed !"
 
-func space_key_pressed():
+func space_key_pressed() -> bool:
 	print("scene received space")
 	if count == 0:
 		$Countdown_container/Countdown_label.text = "Launched !"
 		is_launched = true
 		GlobalSignalHandler.emit_signal("rocket_launched")
-		
+		return true
+	return false

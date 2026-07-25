@@ -4,6 +4,8 @@ extends Node2D
 
 var main_timer:Timer;
 
+var fenetre:float = 0.1;
+
 var list_space_scenes = []
 
 var space_screen_scene = preload("res://space_screen.tscn")
@@ -33,10 +35,21 @@ func add_screen() -> void:
 func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_SPACE:
-			for scene in list_space_scenes:
-				scene.space_key_pressed()
-			
+			var at_least_one_launched:bool = false;
+			# si c'est dans la fenetre on balance au scenes filles
+			if main_timer.time_left > fenetre and main_timer.time_left < 1 - fenetre :
+				game_over("out of rythm")
+			else :
+				for scene in list_space_scenes:
+					if scene.space_key_pressed():
+						at_least_one_launched = true
+				if (!at_least_one_launched):
+					game_over("no rocket to launch !")
 
 
 func on_rocket_launch():
 	print("Main receveive : rocket launched")
+	
+	
+func game_over(cause):
+	print ("GAME OVER : ", cause)
