@@ -82,6 +82,7 @@ func space_key_pressed() -> bool:
 			GlobalSignalHandler.emit_signal("rocket_launched")
 			$AnimationPlayer.play("rocket_launch")
 			$background.shake()
+			rocket_ref.start_fire()
 			# next state
 			is_done()
 		return true

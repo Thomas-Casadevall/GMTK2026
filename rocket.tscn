@@ -2,9 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://cs7jhpgpbv31x" path="res://entities/assets/images/rocket/ROCKET_Turbo.png" id="1_r2l15"]
 [ext_resource type="Script" uid="uid://cvwrym3ficbly" path="res://rocket.gd" id="1_tpb7v"]
+[ext_resource type="Texture2D" uid="uid://dy7vumgablr0l" path="res://entities/assets/images/rocket/VFX_fire-1.png" id="2_7htxx"]
 [ext_resource type="Texture2D" uid="uid://dy315nmveyg6f" path="res://entities/assets/images/rocket/smoke.png" id="2_cum1y"]
 [ext_resource type="Texture2D" uid="uid://ytalpgnmbis1" path="res://entities/assets/images/rocket/ROCKET_Cabin.png" id="2_tpb7v"]
 [ext_resource type="Texture2D" uid="uid://dj0m0ddgj8rpl" path="res://entities/assets/images/rocket/ROCKET_Hat.png" id="3_cum1y"]
+[ext_resource type="Texture2D" uid="uid://draros8cawsl" path="res://entities/assets/images/rocket/VFX_fire-2.png" id="3_mnerj"]
+[ext_resource type="Texture2D" uid="uid://blg6k3tqw3uyh" path="res://entities/assets/images/rocket/VFX_fire-3.png" id="4_lm57y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_546ky"]
 atlas = ExtResource("2_cum1y")
@@ -42,6 +45,20 @@ region = Rect2(417, 117, 139, 117)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_7htxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mnerj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lm57y")
+}],
+"loop": 1,
+"name": &"fire",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_546ky")
 }, {
 "duration": 1.0,
@@ -66,8 +83,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_aw411")
 }],
 "loop": 1,
-"name": &"default",
-"speed": 5.0
+"name": &"smoke",
+"speed": 15.0
 }]
 
 [node name="Rocket" type="Node2D" unique_id=829483439]
@@ -78,8 +95,8 @@ position = Vector2(-7.6293945e-06, -20.000015)
 rotation = 1.5707964
 scale = Vector2(1.4, 1.4)
 sprite_frames = SubResource("SpriteFrames_mg04i")
-frame = 5
-frame_progress = 0.84299654
+animation = &"smoke"
+frame_progress = 0.18748258
 offset = Vector2(-1.428566, 142.14285)
 
 [node name="turbo" type="Sprite2D" parent="." unique_id=315743173]
