@@ -191,8 +191,8 @@ texture = ExtResource("10_ann15")
 centered = false
 
 [node name="Countdown_container" type="HBoxContainer" parent="." unique_id=1108685891]
-offset_right = 802.0
-offset_bottom = 187.0
+offset_right = 800.0
+offset_bottom = 275.0
 alignment = 1
 
 [node name="Countdown_label" type="Label" parent="Countdown_container" unique_id=13551825]
