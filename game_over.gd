@@ -18,14 +18,14 @@ func _ready() -> void:
 	
 	
 	# Tiers
-	if score > tiers[0]:
-		$markers/plat.visible = true
-	elif score > tiers[1]:
-		$markers/gold.visible = true
-	elif score > tiers[2]:
-		$markers/silver.visible = true
-	elif score > tiers[3]:
-		$markers/bronze.visible = true
+	#if score > tiers[0]:
+		#$markers/plat.visible = true
+	#elif score > tiers[1]:
+		#$markers/gold.visible = true
+	#elif score > tiers[2]:
+		#$markers/silver.visible = true
+	#elif score > tiers[3]:
+		#$markers/bronze.visible = true
 	#else:
 		#$Panel/CenterContainer/VBox/you_suck.visible = true
 		#$markers/you.visible = true
