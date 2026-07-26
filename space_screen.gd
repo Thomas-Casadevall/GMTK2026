@@ -73,9 +73,9 @@ func init_time(time_countdown :float, time_construction :float, time_fenetre :fl
 
 func constructed() -> void:
 	$Countdown_container/Countdown_label.text = str(b_countdown.wait_time -1)
+	current_state = STATE.countdown
 	b_countdown.start()
 	$ground_pos/Path2D/PathFollow2D/Rocket.start_smoke()
-	rocket_ref.construction_done.connect(constructed)
 
 
 func sync() -> void:
@@ -83,15 +83,13 @@ func sync() -> void:
 		STATE.done:
 			start_construction()
 		STATE.construction:
+			print("new_step construction")
 			rocket_ref.construct_step()
-	current_state = STATE.countdown
 
 func space_key_pressed() -> bool:
-	print("scene received space")
 	if current_state == STATE.countdown:
 		print(b_countdown.time_left)
 		if b_countdown.time_left < 0.5:
-			print("rocket envoyee")
 			$Countdown_container/Countdown_label.text = "Launched!"
 			GlobalSignalHandler.emit_signal("rocket_launched")
 			$AnimationPlayer.play("rocket_launch")
@@ -119,12 +117,9 @@ func start_construction() -> void:
 	# TODO construction animation
 
 func _on_countdown_timeout() -> void:
-	print("current_state : ", current_state)
 	if current_state == STATE.countdown:
-		print("t'as encore la fenetre !")
 		$timeout_fenetre.start()
 
 func _on_timeout_fenetre_timeout() -> void:
-	print("_on_timeout_fenetre_timeout")
 	if current_state == STATE.countdown:
 		explode()
