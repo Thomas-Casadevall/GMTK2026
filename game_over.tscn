@@ -154,30 +154,27 @@ texture = ExtResource("10_woa3c")
 centered = false
 
 [node name="markers" type="Node2D" parent="." unique_id=967407555]
+position = Vector2(28, 42)
 
 [node name="plat" type="Sprite2D" parent="markers" unique_id=2116701559]
-visible = false
 position = Vector2(268, 501)
 rotation = 1.5707964
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("11_ku74v")
 
 [node name="gold" type="Sprite2D" parent="markers" unique_id=1739077057]
-visible = false
 position = Vector2(269, 527)
 rotation = 1.5707964
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("11_ku74v")
 
 [node name="silver" type="Sprite2D" parent="markers" unique_id=795629171]
-visible = false
 position = Vector2(268, 554)
 rotation = 1.5707964
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("11_ku74v")
 
 [node name="bronze" type="Sprite2D" parent="markers" unique_id=1044914114]
-visible = false
 position = Vector2(267, 578)
 rotation = 1.5707964
 scale = Vector2(0.1, 0.1)
