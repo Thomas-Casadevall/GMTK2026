@@ -1,24 +1,11 @@
 extends Node2D
 
-<<<<<<< Updated upstream
 var count_down_window_min: int = 3
 var count_down_window_max: int = 7
 var fenetre: float = 0.2;
 var perfect_fenetre: float = fenetre/3;
 var resize_factor = 1
 
-=======
-var TOTAL_TIME: float = 5;
-var fenetre: float = 0.5;
-var perfect_fenetre: float = fenetre/3;
-var resize_factor = 1
-
-var start_sound = preload("res://entities/assets/audio/sfx/ui_mainmenu_start.wav")
-
-var perfect_timing_sound = preload("res://entities/assets/audio/sfx/timingfeedback_perfect_v1.wav")
-var mild_perfect_timing_sound = preload("res://entities/assets/audio/sfx/timingfeedback_good_v1.wav")
-
->>>>>>> Stashed changes
 var unpressed_space = preload("res://entities/assets/images/bg/KEY_Space_Unpress.png")
 var pressed_space = preload("res://entities/assets/images/bg/KEY_Space_Press.png")
 
@@ -26,7 +13,6 @@ var pressed_space = preload("res://entities/assets/images/bg/KEY_Space_Press.png
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-<<<<<<< Updated upstream
 	# re init
 	GlobalVariables.list_space_scenes = []
 	GlobalWindowsHandler.available_panels = []
@@ -34,22 +20,12 @@ func _ready() -> void:
 	GlobalVariables.launch_count = 0;
 	GlobalVariables.perfect_launches_count = 0;
 	GlobalSignalHandler.rocket_launched.connect(on_rocket_launched)	
-=======
-	print("READY")
->>>>>>> Stashed changes
 	GlobalWindowsHandler.available_panels.append(self)
 	GlobalVariables.main_screen = self
 	$score_lbl.text = str(GlobalVariables.launch_count)
 	
-<<<<<<< Updated upstream
 	sfx_manager.play_start_sound()
 	sfx_manager.play_ambience_game()
-=======
-	
-	$SFXPlayer.stream = start_sound
-	$SFXPlayer.play()
-	
->>>>>>> Stashed changes
 	add_screen()
 
 func add_screen():
@@ -57,13 +33,9 @@ func add_screen():
 	if rocket_scene == null:
 		return  # No sceen created :(
 	print("rocket_scene.init_time")
-<<<<<<< Updated upstream
 	rocket_scene.init_time(randi_range(count_down_window_min, count_down_window_max), 1, fenetre, 4, $beat)
 	rocket_scene.rocket_exploded.connect(on_rocket_crashed)
 #	sfx_manager.play_start_sound()
-=======
-	rocket_scene.init_time(TOTAL_TIME, 1, fenetre, 4, $beat)
->>>>>>> Stashed changes
 	#$beat.timeout.connect(rocket_scene.sync)
 	
 	# difficulty reset
@@ -98,12 +70,8 @@ func _unhandled_input(event):
 			elif left_time == 0 :
 				timing = GlobalVariables.PRESSED.perfect_after
 			# en dehors de la fenetre
-<<<<<<< Updated upstream
 			else :
 				sfx_manager.play_game_over()
-=======
-				
->>>>>>> Stashed changes
 				game_over("out of rythm")
 				return
 			

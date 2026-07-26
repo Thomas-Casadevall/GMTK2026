@@ -1,11 +1,8 @@
 extends Node
 
-<<<<<<< Updated upstream
 signal rocket_launched(pressed_state: GlobalVariables.PRESSED)
 signal rocket_exploded
 
-=======
->>>>>>> Stashed changes
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
