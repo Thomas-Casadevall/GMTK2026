@@ -62,18 +62,6 @@ var rocket_explode_sfx = [
 	]
 	
 var new_rocket_sound = preload("res://entities/assets/audio/sfx/ui_mainmenu_select.wav")
-	
-#var rocket_launch_sfx = [
-	#preload(),
-	#preload(),
-	#preload(),
-	#preload()
-#var rocket_launch_sfx = [
-	#preload(),
-	#preload(),
-	#preload(),
-	#preload()
-#]
 
 @onready var rocket_ref = $ground_pos/Path2D/PathFollow2D/Rocket
 
@@ -131,6 +119,7 @@ func constructed() -> void:
 	current_state = STATE.countdown
 	b_countdown.start()
 	$ground_pos/Path2D/PathFollow2D/Rocket.start_smoke()
+	
 
 
 func sync() -> void:
@@ -171,6 +160,9 @@ func explode() -> void:
 	$AudioStreamPlayer.stream = rocket_explode_sfx.pick_random()
 	$AudioStreamPlayer.play()
 	# State change
+	$perfect.visible = true
+	$AnimatedSprite2D.visible = true
+	$AnimatedSprite2D.play()
 	is_done()
 
 func start_construction() -> void:
@@ -187,3 +179,6 @@ func _on_countdown_timeout() -> void:
 func _on_timeout_fenetre_timeout() -> void:
 	if current_state == STATE.countdown:
 		explode()
+
+func perfect_animation():
+	$AnimationPlayer.play("perfect")

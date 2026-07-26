@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bwwsw4acrxt2o" path="res://entities/assets/images/bg/GROUND_var1.png" id="6_umoqg"]
 [ext_resource type="Texture2D" uid="uid://c1gtp0jd4ugur" path="res://entities/assets/images/bg/MOUNTAINS.png" id="7_jgggg"]
 [ext_resource type="Texture2D" uid="uid://b3q2cvwluln4c" path="res://entities/assets/images/bg/HILL_var1.png" id="8_apxuq"]
+[ext_resource type="Texture2D" uid="uid://2vnpojw3toli" path="res://entities/assets/images/bg/Perfect.png" id="9_1shtp"]
 [ext_resource type="Texture2D" uid="uid://brn44yud2e3kb" path="res://entities/assets/images/bg/SCREEN.png" id="10_ann15"]
 
 [sub_resource type="Curve2D" id="Curve2D_7tajh"]
@@ -17,7 +18,6 @@ _data = {
 point_count = 12
 
 [sub_resource type="Animation" id="Animation_cvb50"]
-length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -41,6 +41,57 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.8, 0.8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("perfect:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2210687, 0.2210687), Vector2(1.5, 1.5), Vector2(0.2210687, 0.2210687)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("perfect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1shtp"]
+resource_name = "perfect"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("perfect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2210687, 0.2210687), Vector2(1.5, 1.5), Vector2(0.2210687, 0.2210687)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("perfect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_ttsuj"]
@@ -74,6 +125,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jfvg5"]
 _data = {
 &"RESET": SubResource("Animation_cvb50"),
+&"perfect": SubResource("Animation_1shtp"),
 &"rocket_launch": SubResource("Animation_ttsuj")
 }
 
@@ -110,11 +162,6 @@ texture = ExtResource("6_umoqg")
 centered = false
 script = ExtResource("3_cvb50")
 
-[node name="screen_border" type="Sprite2D" parent="background" unique_id=1420199155]
-scale = Vector2(0.94483566, 0.9299883)
-texture = ExtResource("10_ann15")
-centered = false
-
 [node name="ground_pos" type="Marker2D" parent="." unique_id=924667353]
 position = Vector2(414, 524)
 
@@ -130,6 +177,18 @@ rotation = -1.550391
 position = Vector2(17.792227, 38.64501)
 rotation = -0.020105544
 scale = Vector2(0.8, 0.8)
+
+[node name="perfect" type="Sprite2D" parent="." unique_id=572372668]
+visible = false
+position = Vector2(424, 372)
+rotation = -0.5854887
+scale = Vector2(0.2210687, 0.2210687)
+texture = ExtResource("9_1shtp")
+
+[node name="screen_border" type="Sprite2D" parent="." unique_id=1420199155]
+scale = Vector2(0.94483566, 0.9299883)
+texture = ExtResource("10_ann15")
+centered = false
 
 [node name="Countdown_container" type="HBoxContainer" parent="." unique_id=1108685891]
 offset_right = 802.0

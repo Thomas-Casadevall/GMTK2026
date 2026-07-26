@@ -63,6 +63,7 @@ func _unhandled_input(event):
 					at_least_one_launched = true
 					if timing == GlobalVariables.PRESSED.perfect:
 						best_launch = GlobalVariables.PRESSED.perfect
+						scene.perfect_animation()
 						
 					# if there is no perfect launch timing, set the state to timing
 					# (GlobalVariables.PRESSED.after_beat or GlobalVariables.PRESSED.before_beat)
