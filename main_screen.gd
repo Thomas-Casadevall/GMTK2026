@@ -5,11 +5,6 @@ var fenetre: float = 0.2;
 var perfect_fenetre: float = fenetre/3;
 var resize_factor = 1
 
-var start_sound = preload("res://entities/assets/audio/sfx/ui_mainmenu_start.wav")
-
-var perfect_timing_sound = preload("res://entities/assets/audio/sfx/timingfeedback_perfect_v1.wav")
-var mild_perfect_timing_sound = preload("res://entities/assets/audio/sfx/timingfeedback_good_v1.wav")
-
 var unpressed_space = preload("res://entities/assets/images/bg/KEY_Space_Unpress.png")
 var pressed_space = preload("res://entities/assets/images/bg/KEY_Space_Press.png")
 
