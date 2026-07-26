@@ -96,7 +96,7 @@ rotation = 1.5707964
 scale = Vector2(1.4, 1.4)
 sprite_frames = SubResource("SpriteFrames_mg04i")
 animation = &"smoke"
-frame_progress = 0.18748258
+frame_progress = 0.7955535
 offset = Vector2(-1.428566, 142.14285)
 
 [node name="turbo" type="Sprite2D" parent="." unique_id=315743173]
