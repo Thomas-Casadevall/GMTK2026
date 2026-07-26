@@ -161,7 +161,7 @@ grow_vertical = 2
 
 [node name="Credits" type="Label" parent="CenterContainer" unique_id=1253889119]
 layout_mode = 2
-text = "By Capou Art, Jamie Witmarsh, Julien G, Paul Shelley, Ttriiks, Vipykae"
+text = "By Capou Art, Jamie Whitmarsh, Julien G, Paul Shelley, Ttriiks, Vipykae"
 label_settings = SubResource("LabelSettings_eae6q")
 horizontal_alignment = 1
 
