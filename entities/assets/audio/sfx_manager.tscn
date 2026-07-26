@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://b1rn2x24rjtmi" path="res://entities/assets/audio/sfx/rocket_launch_v1_01.wav" id="3_arqfp"]
 [ext_resource type="AudioStream" uid="uid://cx07bcbgjgade" path="res://entities/assets/audio/sfx/rocket_launch_v1_02.wav" id="4_o2m47"]
 [ext_resource type="AudioStream" uid="uid://deuhku6mb52hx" path="res://entities/assets/audio/sfx/rocket_launch_v1_03.wav" id="5_w35co"]
-[ext_resource type="AudioStream" uid="uid://c5xe8dcxgat3q" path="res://entities/assets/audio/sfx/rocket_launch_v1_04.wav" id="6_a28il"]
+[ext_resource type="AudioStream" uid="uid://b7yr2fhuw0iei" path="res://entities/assets/audio/sfx/rocket_launch_v3_04.wav" id="6_jihy5"]
 [ext_resource type="AudioStream" uid="uid://blbl31b58mllh" path="res://entities/assets/audio/sfx/rocket_crash_01.wav" id="7_axhnr"]
 [ext_resource type="AudioStream" uid="uid://dtktsgxj22t0n" path="res://entities/assets/audio/sfx/rocket_crash_02.wav" id="8_1sqx1"]
 [ext_resource type="AudioStream" uid="uid://dye60xm05wxb5" path="res://entities/assets/audio/sfx/rocket_crash_03.wav" id="9_iqmj1"]
@@ -20,7 +20,7 @@ streams_count = 4
 stream_0/stream = ExtResource("3_arqfp")
 stream_1/stream = ExtResource("4_o2m47")
 stream_2/stream = ExtResource("5_w35co")
-stream_3/stream = ExtResource("6_a28il")
+stream_3/stream = ExtResource("6_jihy5")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1shtp"]
 streams_count = 4
