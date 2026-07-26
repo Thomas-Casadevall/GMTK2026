@@ -50,6 +50,8 @@ func _process(delta: float) -> void:
 
 func _unhandled_input(event):
 	if event is InputEventKey:
+		if $mini_wait.time_left != 0:
+			return
 		var best_launch = null
 		if event.pressed and event.keycode == KEY_SPACE:
 			$Sprite2D2.texture = pressed_space

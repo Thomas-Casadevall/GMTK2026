@@ -77,6 +77,11 @@ _data = {
 }
 point_count = 12
 
+[sub_resource type="LabelSettings" id="LabelSettings_eae6q"]
+font_size = 60
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 0.29803923)
+
 [node name="Menu" type="Control" unique_id=1953338222]
 layout_mode = 3
 anchors_preset = 15
@@ -130,7 +135,20 @@ scale = Vector2(0.8, 0.8)
 
 [node name="animation_loop" type="Timer" parent="." unique_id=269244301]
 
-[node name="start_debug" type="Timer" parent="." unique_id=1898696851]
-wait_time = 5.0
+[node name="mini_wait" type="Timer" parent="." unique_id=1898696851]
+wait_time = 0.5
 one_shot = true
 autostart = true
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=890233714]
+custom_minimum_size = Vector2(800, 800)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CenterContainer" unique_id=1253889119]
+layout_mode = 2
+text = "PRESS SPACE
+TO SPACE !"
+label_settings = SubResource("LabelSettings_eae6q")
+horizontal_alignment = 1
