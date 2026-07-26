@@ -2,8 +2,6 @@ extends Node2D
 
 @onready var sfx_manager = SfxManager
 
-var game_over_sound = preload("res://entities/assets/audio/sfx/ui_mainmenu_exit.wav")
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
