@@ -115,7 +115,10 @@ func space_key_pressed(pressed: GlobalVariables.PRESSED) -> bool:
 		var is_before = pressed == GlobalVariables.PRESSED.before_beat or pressed == GlobalVariables.PRESSED.perfect_before
 		if b_countdown.time_left == 0 or (b_countdown.time_left == 1 and is_before):
 			$Countdown_container/Countdown_label.text = "Launched!"
+<<<<<<< Updated upstream
 			GlobalSignalHandler.emit_signal("rocket_launched", pressed)
+=======
+>>>>>>> Stashed changes
 			$AnimationPlayer.play("rocket_launch")
 			$background/skybox.shake()
 			$background/clouds.shake()
@@ -138,8 +141,13 @@ func is_done() -> void:
 func explode() -> void:
 	GlobalSignalHandler.emit_signal("rocket_exploded")
 	$Countdown_container/Countdown_label.text = "Crashed!"
+<<<<<<< Updated upstream
 	sfx_manager.play_rocket_explode()
 	# State change
+=======
+	$AudioStreamPlayer.stream = rocket_explode_sfx.pick_random()
+	$AudioStreamPlayer.play()
+>>>>>>> Stashed changes
 	
 	is_done()
 
@@ -160,6 +168,7 @@ func _on_timeout_fenetre_timeout() -> void:
 func perfect_animation():
 	print("perfect animation")
 	$Perfect_animation.play("perfect")
+<<<<<<< Updated upstream
 
 func blink_before_animation():
 	$warning.texture = warning_before_texture
@@ -168,3 +177,5 @@ func blink_before_animation():
 func blink_after_animation():
 	$warning.texture = warning_after_texture
 	$Perfect_animation.play("Blinking")
+=======
+>>>>>>> Stashed changes

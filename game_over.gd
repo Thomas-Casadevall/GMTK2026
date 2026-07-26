@@ -1,7 +1,11 @@
 extends Node2D
 
+<<<<<<< Updated upstream
 const tiers = [33, 25, 18, 10] # DONT FORGET TO UPDATE UI IF YOU CHANGE THIS
 @onready var sfx_manager = SfxManager
+=======
+var game_over_sound = preload("res://entities/assets/audio/sfx/ui_mainmenu_exit.wav")
+>>>>>>> Stashed changes
 
 
 # Called when the node enters the scene tree for the first time.
@@ -10,6 +14,7 @@ func _ready() -> void:
 	$Panel/CenterContainer/VBox/Label.text = GlobalVariables.game_over_reason
 	$mini_wait.start()
 	$mini_wait.wait_time = 1
+<<<<<<< Updated upstream
 	$Panel/CenterContainer/VBox/launches_lbl.text = "Today you launched " + str(GlobalVariables.launch_count) + " rockets."
 	$Panel/CenterContainer/VBox/perfects_lbl.text = "Of which " + str(GlobalVariables.perfect_launches_count) + " were perfect launches!"
 	
@@ -30,6 +35,12 @@ func _ready() -> void:
 		#$Panel/CenterContainer/VBox/you_suck.visible = true
 		#$markers/you.visible = true
 	sfx_manager.play_game_over()
+=======
+	
+	
+	$SFXPlayer.stream = game_over_sound
+	$SFXPlayer.play()
+>>>>>>> Stashed changes
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -147,6 +147,7 @@ scale = Vector2(0.93920773, 1.1907165)
 texture = ExtResource("10_woa3c")
 centered = false
 
+<<<<<<< Updated upstream
 [node name="markers" type="Node2D" parent="." unique_id=967407555]
 
 [node name="plat" type="Sprite2D" parent="markers" unique_id=2116701559]
@@ -179,4 +180,6 @@ position = Vector2(277.8, 597)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("11_dd2jf")
 
+=======
+>>>>>>> Stashed changes
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=788722321]

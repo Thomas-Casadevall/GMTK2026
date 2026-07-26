@@ -59,6 +59,45 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0.8, 0.8)]
 }
+<<<<<<< Updated upstream
+=======
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("perfect:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2210687, 0.2210687), Vector2(1.5, 1.5), Vector2(0.2210687, 0.2210687)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("perfect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+>>>>>>> Stashed changes
 
 [sub_resource type="Animation" id="Animation_1shtp"]
 resource_name = "perfect"
@@ -76,7 +115,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("perfect:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -98,6 +137,21 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false]
 }
+<<<<<<< Updated upstream
+=======
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+>>>>>>> Stashed changes
 
 [sub_resource type="Animation" id="Animation_ttsuj"]
 resource_name = "rocket_launch"
@@ -223,13 +277,23 @@ libraries/ = SubResource("AnimationLibrary_jfvg5")
 
 [node name="perfect" type="Sprite2D" parent="." unique_id=572372668]
 visible = false
+<<<<<<< Updated upstream
 position = Vector2(409, 389)
+=======
+position = Vector2(131, 118)
+>>>>>>> Stashed changes
 rotation = -0.5854887
 scale = Vector2(0.2210687, 0.2210687)
 texture = ExtResource("9_1shtp")
 
+<<<<<<< Updated upstream
 [node name="warning" type="Sprite2D" parent="." unique_id=77857741]
 visible = false
 position = Vector2(413, 417)
 scale = Vector2(1.1666666, 1.1666666)
 texture = ExtResource("11_umoqg")
+=======
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1206411158]
+position = Vector2(332, 230)
+texture = ExtResource("9_1shtp")
+>>>>>>> Stashed changes
