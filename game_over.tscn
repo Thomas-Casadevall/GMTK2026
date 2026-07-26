@@ -74,3 +74,5 @@ position = Vector2(6, 691.00006)
 scale = Vector2(0.93920773, 1.1907165)
 texture = ExtResource("10_woa3c")
 centered = false
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=788722321]
