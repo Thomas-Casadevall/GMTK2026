@@ -177,3 +177,5 @@ visible = false
 position = Vector2(277.8, 597)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("11_dd2jf")
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=788722321]

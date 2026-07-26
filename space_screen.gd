@@ -47,6 +47,9 @@ var hill_textures := [
 	preload("res://entities/assets/images/bg/HILL_var3.png")
 ]
 
+var warning_before_texture = preload("res://entities/assets/images/bg/Too_Early.png")
+var warning_after_texture = preload("res://entities/assets/images/bg/Too_Late.png")
+
 @onready var rocket_ref = $ground_pos/Path2D/PathFollow2D/Rocket
 @onready var sfx_manager = SfxManager
 
@@ -133,10 +136,11 @@ func is_done() -> void:
 	b_restart.start()
 
 func explode() -> void:
-	rocket_exploded.emit()
+	GlobalSignalHandler.emit_signal("rocket_exploded")
 	$Countdown_container/Countdown_label.text = "Crashed!"
 	sfx_manager.play_rocket_explode()
 	# State change
+	
 	is_done()
 
 func start_construction() -> void:
@@ -154,4 +158,13 @@ func _on_timeout_fenetre_timeout() -> void:
 		explode()
 
 func perfect_animation():
-	$AnimationPlayer.play("perfect")
+	print("perfect animation")
+	$Perfect_animation.play("perfect")
+
+func blink_before_animation():
+	$warning.texture = warning_before_texture
+	$Perfect_animation.play("Blinking")
+
+func blink_after_animation():
+	$warning.texture = warning_after_texture
+	$Perfect_animation.play("Blinking")

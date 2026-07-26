@@ -1,6 +1,7 @@
 extends Node2D
 
-var TOTAL_TIME: float = 5;
+var count_down_window_min: int = 3
+var count_down_window_max: int = 7
 var fenetre: float = 0.2;
 var perfect_fenetre: float = fenetre/3;
 var resize_factor = 1
@@ -12,14 +13,18 @@ var pressed_space = preload("res://entities/assets/images/bg/KEY_Space_Press.png
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# re init
 	GlobalVariables.list_space_scenes = []
 	GlobalWindowsHandler.available_panels = []
 	GlobalWindowsHandler.taken_panels = []
-	GlobalSignalHandler.rocket_launched.connect(on_rocket_launched)
+	GlobalVariables.launch_count = 0;
+	GlobalSignalHandler.rocket_launched.connect(on_rocket_launched)	
 	GlobalWindowsHandler.available_panels.append(self)
 	GlobalVariables.main_screen = self
 	$score_lbl.text = str(GlobalVariables.launch_count)
 	
+	sfx_manager.play_start_sound()
+	sfx_manager.play_ambience_game()
 	add_screen()
 
 func add_screen():
@@ -27,16 +32,25 @@ func add_screen():
 	if rocket_scene == null:
 		return  # No sceen created :(
 	print("rocket_scene.init_time")
-	rocket_scene.init_time(TOTAL_TIME, 1, fenetre, 4, $beat)
+	rocket_scene.init_time(randi_range(count_down_window_min, count_down_window_max), 1, fenetre, 4, $beat)
+	rocket_scene.rocket_exploded.connect(on_rocket_crashed)
+#	sfx_manager.play_start_sound()
+	#$beat.timeout.connect(rocket_scene.sync)
 	
-	sfx_manager.play_start_sound()
+	# difficulty reset
+	$beat.wait_time = GlobalVariables.MAINCLOCK_TIME
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# difficulty increase
+	#if GlobalVariables.launch_count > 5:
+		#$beat.wait_time = GlobalVariables.MAINCLOCK_TIME * 0.8;
 	pass
 
 func _unhandled_input(event):
 	if event is InputEventKey:
+		if $mini_wait.time_left != 0:
+			return
 		var best_launch = null
 		if event.pressed and event.keycode == KEY_SPACE:
 			$Sprite2D2.texture = pressed_space
@@ -63,14 +77,28 @@ func _unhandled_input(event):
 			for scene in GlobalVariables.list_space_scenes:
 				if scene.space_key_pressed(timing):
 					at_least_one_launched = true
-					if timing == GlobalVariables.PRESSED.before_beat or best_launch == GlobalVariables.PRESSED.after_beat:
-						best_launch = GlobalVariables.PRESSED.before_beat
+					if timing == GlobalVariables.PRESSED.perfect_before or timing == GlobalVariables.PRESSED.perfect_after:
+						best_launch = GlobalVariables.PRESSED.perfect_before
+						print("PERFECT")
 						scene.perfect_animation()
 						
 					# if there is no perfect launch timing, set the state to timing
 					# (GlobalVariables.PRESSED.after_beat or GlobalVariables.PRESSED.before_beat)
-					elif best_launch != GlobalVariables.PRESSED.perfect_before and best_launch != GlobalVariables.PRESSED.perfect_after:
+#					elif best_launch != GlobalVariables.PRESSED.perfect_before and best_launch != GlobalVariables.PRESSED.perfect_after:
+					elif timing == GlobalVariables.PRESSED.before_beat:
+						if best_launch != GlobalVariables.PRESSED.perfect_before and best_launch != GlobalVariables.PRESSED.perfect_after:
+							best_launch = timing
+						scene.blink_before_animation()
+						print("TOO EARLY")
+					elif timing == GlobalVariables.PRESSED.after_beat:
+						if best_launch != GlobalVariables.PRESSED.perfect_before and best_launch != GlobalVariables.PRESSED.perfect_after:
+							best_launch = timing
 						best_launch = timing
+						scene.blink_after_animation()
+						print("TOO LATE")
+					else:
+						print("TOO WHAT ??")
+						print(timing)
 				
 			if (!at_least_one_launched):
 				game_over("no rocket to launch !")
@@ -106,6 +134,3 @@ func game_over(cause):
 	print ("GAME OVER : ", cause)
 	
 	get_tree().change_scene_to_file("res://game_over.tscn")
-
-func _on_beat_timeout() -> void:
-	$AnimationPlayer.play("beat_visualization")

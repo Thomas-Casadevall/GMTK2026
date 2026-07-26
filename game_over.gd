@@ -1,6 +1,8 @@
 extends Node2D
 
 const tiers = [33, 25, 18, 10] # DONT FORGET TO UPDATE UI IF YOU CHANGE THIS
+@onready var sfx_manager = SfxManager
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,6 +28,8 @@ func _ready() -> void:
 	else:
 		$Panel/CenterContainer/VBox/you_suck.visible = true
 		$markers/you.visible = true
+	sfx_manager.play_game_over()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -37,4 +41,5 @@ func _unhandled_input(event):
 		print ($mini_wait.time_left)
 		if $mini_wait.time_left != 0:
 			return
+		sfx_manager.on_new_game()
 		get_tree().change_scene_to_file("res://main_screen.tscn")

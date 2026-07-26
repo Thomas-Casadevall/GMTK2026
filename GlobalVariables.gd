@@ -2,7 +2,11 @@ extends Node
 
 var list_space_scenes = []
 
-var main_screen: Node2D
+var MAX_SPACE_PANELS = 4
+
+var MAINCLOCK_TIME:float = 1.0
+
+var main_screen:Node2D
 
 enum PRESSED {
 	before_beat,
