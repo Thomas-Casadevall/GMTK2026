@@ -102,8 +102,8 @@ func constructed() -> void:
 
 func sync() -> void:
 	match current_state:
-		STATE.done:
-			start_construction()
+		#STATE.done:
+			#start_construction()
 		STATE.construction:
 			rocket_ref.construct_step()
 
@@ -138,8 +138,8 @@ func start_construction() -> void:
 	$Countdown_container/Countdown_label.text = "Construction..."
 	current_state = STATE.construction
 	rocket_ref.reset()
-	b_construction.start()
-	# TODO construction animation
+	$AnimationPlayer.play("RESET")
+#	b_construction.start()
 
 func _on_countdown_timeout() -> void:
 	if current_state == STATE.countdown:
