@@ -40,7 +40,7 @@ bus = &"SFX"
 
 [node name="RocketLaunch" type="AudioStreamPlayer" parent="." unique_id=983369179]
 stream = SubResource("AudioStreamRandomizer_lya80")
-volume_db = -4.2
+volume_db = -4.6
 bus = &"SFX"
 
 [node name="RocketExplode" type="AudioStreamPlayer" parent="." unique_id=1243282560]
