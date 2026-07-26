@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://bcptvte0wl6ou" path="res://entities/assets/audio/sfx/ui_mainmenu_exit.wav" id="12_braak"]
 [ext_resource type="AudioStream" uid="uid://ctkncc25cdp13" path="res://entities/assets/audio/sfx/timingfeedback_perfect_v2.wav" id="13_ms3gr"]
 [ext_resource type="AudioStream" uid="uid://dad57peogby26" path="res://entities/assets/audio/sfx/timingfeedback_good_v1.wav" id="14_xvfcm"]
+[ext_resource type="AudioStream" uid="uid://4gdlaqueh2s2" path="res://entities/assets/audio/sfx/timingfeedback_bad_v1.wav" id="15_braak"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lya80"]
 streams_count = 4
@@ -59,4 +60,8 @@ bus = &"SFX"
 
 [node name="MildPerfect" type="AudioStreamPlayer" parent="." unique_id=504779047]
 stream = ExtResource("14_xvfcm")
+bus = &"SFX"
+
+[node name="BadTiming" type="AudioStreamPlayer" parent="." unique_id=1707673252]
+stream = ExtResource("15_braak")
 bus = &"SFX"
