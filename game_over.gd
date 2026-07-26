@@ -2,18 +2,13 @@ extends Node2D
 
 @onready var sfx_manager = SfxManager
 
-var game_over_sound = preload("res://entities/assets/audio/sfx/ui_mainmenu_exit.wav")
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$CenterContainer/Label.text = GlobalVariables.game_over_reason
 	$mini_wait.start()
 	$mini_wait.wait_time = 1
-	
-	
-	$SFXPlayer.stream = game_over_sound
-	$SFXPlayer.play()
+	sfx_manager.play_game_over()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
