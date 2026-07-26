@@ -24,8 +24,9 @@ func animate() -> void:
 		$AnimationPlayer.play("RESET")
 		start_launch_animation = true
 
-func _unhandled_input(event):
-	if event is InputEventKey:
-		if $mini_wait.time_left != 0:
-			return
-		get_tree().change_scene_to_file("res://main_screen.tscn")
+func _input(event):
+	if event is InputEventKey or event is InputEventMouseButton:
+		if event.is_action_pressed("primary_input"):
+			if $mini_wait.time_left != 0:
+				return
+			get_tree().change_scene_to_file("res://main_screen.tscn")

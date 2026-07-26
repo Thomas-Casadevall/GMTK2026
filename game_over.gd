@@ -37,10 +37,11 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _unhandled_input(event):
-	if event is InputEventKey:
-		print ($mini_wait.time_left)
-		if $mini_wait.time_left != 0:
-			return
-		sfx_manager.on_new_game()
-		get_tree().change_scene_to_file("res://main_screen.tscn")
+func _input(event):
+	if event is InputEventKey or event is InputEventMouseButton:
+		if event.is_action_pressed("primary_input"):
+			print ($mini_wait.time_left)
+			if $mini_wait.time_left != 0:
+				return
+			sfx_manager.on_new_game()
+			get_tree().change_scene_to_file("res://main_screen.tscn")
