@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ytalpgnmbis1" path="res://entities/assets/images/rocket/ROCKET_Cabin.png" id="6_3u7xm"]
 [ext_resource type="Texture2D" uid="uid://dm3f2v4txo0y3" path="res://entities/assets/images/bg/crashed.png" id="8_fkf4o"]
 [ext_resource type="Texture2D" uid="uid://bx37tyokneqxa" path="res://entities/assets/images/bg/Control_panel.png" id="10_woa3c"]
-[ext_resource type="Texture2D" uid="uid://c62cs0p6r37b0" path="res://entities/assets/icon.svg" id="11_dd2jf"]
+[ext_resource type="Texture2D" uid="uid://c7uecfqffa6cb" path="res://entities/assets/images/rocket/ROCKET_Full.png" id="11_ku74v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_woa3c"]
 content_margin_left = 0.0
@@ -114,10 +114,10 @@ text = "Payout tiers"
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(40, 0)
-text = "Platinum:     $33
-Gold:             $25
-Silver:           $18
-Bronze:        $10"
+text = "Platinum:     $88
+Gold:             $40
+Silver:            $20
+Bronze:           $5"
 
 [node name="you_suck" type="Label" parent="Panel/CenterContainer/VBox" unique_id=1387986666]
 visible = false
@@ -151,32 +151,37 @@ centered = false
 
 [node name="plat" type="Sprite2D" parent="markers" unique_id=2116701559]
 visible = false
-position = Vector2(278.59998, 488.8)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("11_dd2jf")
+position = Vector2(268, 501)
+rotation = 1.5707964
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("11_ku74v")
 
 [node name="gold" type="Sprite2D" parent="markers" unique_id=1739077057]
 visible = false
-position = Vector2(278.59998, 516.8)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("11_dd2jf")
+position = Vector2(269, 527)
+rotation = 1.5707964
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("11_ku74v")
 
 [node name="silver" type="Sprite2D" parent="markers" unique_id=795629171]
 visible = false
-position = Vector2(279.59998, 543.8)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("11_dd2jf")
+position = Vector2(268, 554)
+rotation = 1.5707964
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("11_ku74v")
 
 [node name="bronze" type="Sprite2D" parent="markers" unique_id=1044914114]
 visible = false
-position = Vector2(278.59998, 571.8)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("11_dd2jf")
+position = Vector2(267, 578)
+rotation = 1.5707964
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("11_ku74v")
 
 [node name="you" type="Sprite2D" parent="markers" unique_id=1971228953]
 visible = false
-position = Vector2(277.8, 597)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("11_dd2jf")
+position = Vector2(292, 595)
+rotation = 1.5707964
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("11_ku74v")
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=788722321]

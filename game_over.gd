@@ -1,8 +1,7 @@
 extends Node2D
 
-const tiers = [33, 25, 18, 10] # DONT FORGET TO UPDATE UI IF YOU CHANGE THIS
+const tiers = [88, 40, 20, 5] # DONT FORGET TO UPDATE UI IF YOU CHANGE THIS
 @onready var sfx_manager = SfxManager
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,19 +12,19 @@ func _ready() -> void:
 	$Panel/CenterContainer/VBox/launches_lbl.text = "Today you launched " + str(GlobalVariables.launch_count) + " rockets."
 	$Panel/CenterContainer/VBox/perfects_lbl.text = "Of which " + str(GlobalVariables.perfect_launches_count) + " were perfect launches!"
 	
-	var score:float = GlobalVariables.launch_count + GlobalVariables.perfect_launches_count
-	$Panel/CenterContainer/VBox/score_lbl.text = "Your pay today is $" + str(score) + "."
+	var score:float = GlobalVariables.launch_count + GlobalVariables.perfect_launches_count * 1.5
+	$Panel/CenterContainer/VBox/score_lbl.text = "Your pay today is $" + str(score).pad_decimals(2) + "."
 	
 	
 	# Tiers
-	#if score > tiers[0]:
-		#$markers/plat.visible = true
-	#elif score > tiers[1]:
-		#$markers/gold.visible = true
-	#elif score > tiers[2]:
-		#$markers/silver.visible = true
-	#elif score > tiers[3]:
-		#$markers/bronze.visible = true
+	if score > tiers[0]:
+		$markers/plat.visible = true
+	elif score > tiers[1]:
+		$markers/gold.visible = true
+	elif score > tiers[2]:
+		$markers/silver.visible = true
+	elif score > tiers[3]:
+		$markers/bronze.visible = true
 	#else:
 		#$Panel/CenterContainer/VBox/you_suck.visible = true
 		#$markers/you.visible = true
