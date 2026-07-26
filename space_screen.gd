@@ -131,7 +131,7 @@ func sync() -> void:
 
 func space_key_pressed(pressed: GlobalVariables.PRESSED) -> bool:
 	if current_state == STATE.countdown:
-		if b_countdown.time_left == 0 or (b_countdown.time_left == 1 and pressed == GlobalVariables.PRESSED.before_beat):
+		if b_countdown.time_left == 0 or (b_countdown.time_left == 1 and (pressed == GlobalVariables.PRESSED.before_beat or pressed == GlobalVariables.PRESSED.perfect_before)):
 			$Countdown_container/Countdown_label.text = "Launched!"
 			GlobalSignalHandler.emit_signal("rocket_launched")
 			$AnimationPlayer.play("rocket_launch")
@@ -160,9 +160,9 @@ func explode() -> void:
 	$AudioStreamPlayer.stream = rocket_explode_sfx.pick_random()
 	$AudioStreamPlayer.play()
 	# State change
-	$perfect.visible = true
-	$AnimatedSprite2D.visible = true
-	$AnimatedSprite2D.play()
+	#$perfect.visible = true
+	#$AnimatedSprite2D.visible = true
+	#$AnimatedSprite2D.play()
 	is_done()
 
 func start_construction() -> void:

@@ -4,7 +4,8 @@ var list_space_scenes = []
 
 enum PRESSED {
 	before_beat,
-	perfect,
+	perfect_before,
+	perfect_after,
 	after_beat,
 	off
 }

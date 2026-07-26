@@ -2,6 +2,7 @@ extends Node2D
 
 var TOTAL_TIME: float = 5;
 var fenetre: float = 0.2;
+var perfect_fenetre: float = fenetre/3;
 var resize_factor = 1
 
 var start_sound = preload("res://entities/assets/audio/sfx/ui_mainmenu_start.wav")
@@ -45,12 +46,17 @@ func _unhandled_input(event):
 			var at_least_one_launched:bool = false;
 			# si c'est dans la fenetre on balance au scenes filles
 			var timing : GlobalVariables.PRESSED = GlobalVariables.PRESSED.off
-			if $beat.time_left < fenetre :
+			var left_time:float = $beat.time_left;
+			if left_time <= fenetre and left_time > perfect_fenetre :
 				timing = GlobalVariables.PRESSED.before_beat
-			elif $beat.time_left > 1 - fenetre:
+			elif left_time <= fenetre and left_time <= perfect_fenetre :
+				timing = GlobalVariables.PRESSED.perfect_before
+			elif left_time >= 1 - fenetre and left_time >= 1- perfect_fenetre:
+				timing = GlobalVariables.PRESSED.perfect_after
+			elif left_time >= 1 - fenetre and left_time < 1- perfect_fenetre:
 				timing = GlobalVariables.PRESSED.after_beat
-			elif $beat.time_left == 0 :
-				timing = GlobalVariables.PRESSED.perfect
+			elif left_time == 0 :
+				timing = GlobalVariables.PRESSED.perfect_after
 			# en dehors de la fenetre
 			else :
 				$SFXPlayer.stream = game_over_sound
@@ -61,19 +67,19 @@ func _unhandled_input(event):
 			for scene in GlobalVariables.list_space_scenes:
 				if scene.space_key_pressed(timing):
 					at_least_one_launched = true
-					if timing == GlobalVariables.PRESSED.perfect:
-						best_launch = GlobalVariables.PRESSED.perfect
+					if timing == GlobalVariables.PRESSED.before_beat or best_launch == GlobalVariables.PRESSED.perfect_after:
+						best_launch = GlobalVariables.PRESSED.before_beat
 						scene.perfect_animation()
 						
 					# if there is no perfect launch timing, set the state to timing
 					# (GlobalVariables.PRESSED.after_beat or GlobalVariables.PRESSED.before_beat)
-					elif best_launch != GlobalVariables.PRESSED.perfect:
+					elif best_launch != GlobalVariables.PRESSED.before_beat and best_launch != GlobalVariables.PRESSED.perfect_after:
 						best_launch = timing
 				
 			if (!at_least_one_launched):
 				game_over("no rocket to launch !")
 			else:
-				if best_launch == GlobalVariables.PRESSED.perfect:
+				if best_launch == GlobalVariables.PRESSED.before_beat or best_launch == GlobalVariables.PRESSED.perfect_after:
 					$SFXPlayer.stream = perfect_timing_sound
 					$SFXPlayer.play()
 				else:
