@@ -32,6 +32,7 @@ func play_start_sound() -> void:
 
 func play_game_over() -> void:
 	game_over.play()
+	start_sound.stop()
 
 func play_perfect() -> void:
 	perfect.play()
