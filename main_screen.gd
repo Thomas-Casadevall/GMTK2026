@@ -28,9 +28,8 @@ func _ready() -> void:
 	GlobalWindowsHandler.available_panels.append(self)
 	GlobalVariables.main_screen = self
 	
-	$SFXPlayer.stream = start_sound
-	$SFXPlayer.play()
-	
+	sfx_manager.play_start_sound()
+	sfx_manager.play_ambience_game()
 	add_screen()
 
 func add_screen():
