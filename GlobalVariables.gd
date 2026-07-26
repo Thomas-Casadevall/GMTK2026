@@ -2,6 +2,8 @@ extends Node
 
 var list_space_scenes = []
 
+var MAX_SPACE_PANELS = 16
+
 var main_screen:Node2D
 
 enum PRESSED {

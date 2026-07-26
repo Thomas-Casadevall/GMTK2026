@@ -15,6 +15,8 @@ func _ready() -> void:
 	#for scene in GlobalVariables.list_space_scenes:
 
 func add_screen():
+	if GlobalVariables.list_space_scenes.size() >= GlobalVariables.MAX_SPACE_PANELS:
+		return
 	# If there is no more panel available, create some and put old scene in 
 	if len(available_panels) == 0:
 		#print("besoin de rajouter des panneaux")
