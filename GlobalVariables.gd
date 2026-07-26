@@ -2,6 +2,8 @@ extends Node
 
 var list_space_scenes = []
 
+var main_screen:Node2D
+
 enum PRESSED {
 	before_beat,
 	perfect_before,

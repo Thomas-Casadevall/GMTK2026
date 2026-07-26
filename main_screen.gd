@@ -18,8 +18,14 @@ var pressed_space = preload("res://entities/assets/images/bg/KEY_Space_Press.png
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("READY")
+	
+	# re init
+	GlobalVariables.list_space_scenes = []
+	GlobalWindowsHandler.available_panels = []
+	GlobalWindowsHandler.taken_panels = []
 	GlobalSignalHandler.rocket_launched.connect(on_rocket_launched)	
 	GlobalWindowsHandler.available_panels.append(self)
+	GlobalVariables.main_screen = self
 	
 	add_screen()
 
@@ -107,6 +113,7 @@ func on_rocket_crashed():
 func game_over(cause):
 	GlobalVariables.game_over_reason = cause
 	print ("GAME OVER : ", cause)
+	
 	get_tree().change_scene_to_file("res://game_over.tscn")
 
 func _on_beat_timeout() -> void:
