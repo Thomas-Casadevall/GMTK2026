@@ -116,7 +116,7 @@ texture = ExtResource("10_ann15")
 centered = false
 
 [node name="ground_pos" type="Marker2D" parent="." unique_id=924667353]
-position = Vector2(399, 524)
+position = Vector2(414, 524)
 
 [node name="Path2D" type="Path2D" parent="ground_pos" unique_id=1759275320]
 position = Vector2(-399, -663)
