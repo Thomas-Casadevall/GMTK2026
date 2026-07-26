@@ -2,7 +2,7 @@ extends Node
 
 var list_space_scenes = []
 
-var main_screen:Node2D
+var main_screen: Node2D
 
 enum PRESSED {
 	before_beat,
@@ -12,9 +12,10 @@ enum PRESSED {
 	off
 }
 
-var rocket_parts_mixed:bool = false
+var rocket_parts_mixed: bool = false
 
 var launch_count: int = 0;
+var perfect_launches_count: int = 0;
 
 var game_over_reason: String
 

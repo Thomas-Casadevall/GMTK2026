@@ -101,21 +101,18 @@ func constructed() -> void:
 	current_state = STATE.countdown
 	b_countdown.start()
 	$ground_pos/Path2D/PathFollow2D/Rocket.start_smoke()
-	
-
 
 func sync() -> void:
 	match current_state:
-		#STATE.done:
-			#start_construction()
 		STATE.construction:
 			rocket_ref.construct_step()
 
 func space_key_pressed(pressed: GlobalVariables.PRESSED) -> bool:
 	if current_state == STATE.countdown:
-		if b_countdown.time_left == 0 or (b_countdown.time_left == 1 and (pressed == GlobalVariables.PRESSED.before_beat or pressed == GlobalVariables.PRESSED.perfect_before)):
+		var is_before = pressed == GlobalVariables.PRESSED.before_beat or pressed == GlobalVariables.PRESSED.perfect_before
+		if b_countdown.time_left == 0 or (b_countdown.time_left == 1 and is_before):
 			$Countdown_container/Countdown_label.text = "Launched!"
-			GlobalSignalHandler.emit_signal("rocket_launched")
+			GlobalSignalHandler.emit_signal("rocket_launched", pressed)
 			$AnimationPlayer.play("rocket_launch")
 			$background/skybox.shake()
 			$background/clouds.shake()
@@ -140,9 +137,6 @@ func explode() -> void:
 	$Countdown_container/Countdown_label.text = "Crashed!"
 	sfx_manager.play_rocket_explode()
 	# State change
-	#$perfect.visible = true
-	#$AnimatedSprite2D.visible = true
-	#$AnimatedSprite2D.play()
 	is_done()
 
 func start_construction() -> void:
@@ -150,7 +144,6 @@ func start_construction() -> void:
 	current_state = STATE.construction
 	rocket_ref.reset()
 	$AnimationPlayer.play("RESET")
-#	b_construction.start()
 
 func _on_countdown_timeout() -> void:
 	if current_state == STATE.countdown:

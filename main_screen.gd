@@ -12,15 +12,13 @@ var pressed_space = preload("res://entities/assets/images/bg/KEY_Space_Press.png
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("READY")
-	
-	# re init
 	GlobalVariables.list_space_scenes = []
 	GlobalWindowsHandler.available_panels = []
 	GlobalWindowsHandler.taken_panels = []
-	GlobalSignalHandler.rocket_launched.connect(on_rocket_launched)	
+	GlobalSignalHandler.rocket_launched.connect(on_rocket_launched)
 	GlobalWindowsHandler.available_panels.append(self)
 	GlobalVariables.main_screen = self
+	$score_lbl.text = str(GlobalVariables.launch_count)
 	
 	add_screen()
 
@@ -32,7 +30,6 @@ func add_screen():
 	rocket_scene.init_time(TOTAL_TIME, 1, fenetre, 4, $beat)
 	
 	sfx_manager.play_start_sound()
-	#$beat.timeout.connect(rocket_scene.sync)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -60,25 +57,25 @@ func _unhandled_input(event):
 			# en dehors de la fenetre
 			else :
 				sfx_manager.play_game_over()
-				
 				game_over("out of rythm")
 				return
+			
 			for scene in GlobalVariables.list_space_scenes:
 				if scene.space_key_pressed(timing):
 					at_least_one_launched = true
-					if timing == GlobalVariables.PRESSED.before_beat or best_launch == GlobalVariables.PRESSED.perfect_after:
+					if timing == GlobalVariables.PRESSED.before_beat or best_launch == GlobalVariables.PRESSED.after_beat:
 						best_launch = GlobalVariables.PRESSED.before_beat
 						scene.perfect_animation()
 						
 					# if there is no perfect launch timing, set the state to timing
 					# (GlobalVariables.PRESSED.after_beat or GlobalVariables.PRESSED.before_beat)
-					elif best_launch != GlobalVariables.PRESSED.before_beat and best_launch != GlobalVariables.PRESSED.perfect_after:
+					elif best_launch != GlobalVariables.PRESSED.perfect_before and best_launch != GlobalVariables.PRESSED.perfect_after:
 						best_launch = timing
 				
 			if (!at_least_one_launched):
 				game_over("no rocket to launch !")
 			else:
-				if best_launch == GlobalVariables.PRESSED.before_beat or best_launch == GlobalVariables.PRESSED.perfect_after:
+				if best_launch == GlobalVariables.PRESSED.perfect_before or best_launch == GlobalVariables.PRESSED.perfect_after:
 					sfx_manager.play_perfect()
 				else:
 					sfx_manager.play_mild_perfect()
@@ -88,15 +85,18 @@ func _unhandled_input(event):
 		elif event.is_released() and event.keycode == KEY_SPACE:
 			$Sprite2D2.texture = unpressed_space
 
-func on_rocket_launched():
+func on_rocket_launched(pressed: GlobalVariables.PRESSED):
 	print("LAUNCHED")
 	await get_tree().create_timer(0.5).timeout
-	GlobalVariables.launch_count +=1;
+	GlobalVariables.launch_count += 1;
+	if pressed == GlobalVariables.PRESSED.perfect_before or pressed == GlobalVariables.PRESSED.perfect_after:
+		GlobalVariables.perfect_launches_count += 1;
 	if GlobalVariables.launch_count %2 :
 		add_screen()
 	if GlobalVariables.launch_count > 3 :
 		GlobalVariables.rocket_parts_mixed = true
-		
+	
+	$score_lbl.text = str(GlobalVariables.launch_count)
 
 func on_rocket_crashed():
 	game_over("no rocket to launch !")

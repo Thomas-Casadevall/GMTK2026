@@ -10,23 +10,37 @@
 [ext_resource type="Texture2D" uid="uid://ytalpgnmbis1" path="res://entities/assets/images/rocket/ROCKET_Cabin.png" id="6_3u7xm"]
 [ext_resource type="Texture2D" uid="uid://dm3f2v4txo0y3" path="res://entities/assets/images/bg/crashed.png" id="8_fkf4o"]
 [ext_resource type="Texture2D" uid="uid://bx37tyokneqxa" path="res://entities/assets/images/bg/Control_panel.png" id="10_woa3c"]
+[ext_resource type="Texture2D" uid="uid://c62cs0p6r37b0" path="res://entities/assets/icon.svg" id="11_dd2jf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_woa3c"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.76862746)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [node name="Game Over" type="Node2D" unique_id=464555036]
 script = ExtResource("1_yxx3c")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=28908405]
+position = Vector2(23, 23)
 scale = Vector2(0.9456019, 0.9456019)
 texture = ExtResource("2_ftari")
 centered = false
 
 [node name="Sprite2D3" type="Sprite2D" parent="." unique_id=527794278]
-position = Vector2(292.00003, 520)
+position = Vector2(300.00003, 523.00006)
 rotation = 3.1228828
 scale = Vector2(1.7523861, 1.0000001)
 texture = ExtResource("3_28vn7")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1317343019]
-position = Vector2(280, 424)
+position = Vector2(285.00003, 421)
 rotation = 0.014608296
 scale = Vector2(0.9456019, 0.9456019)
 texture = ExtResource("4_k2vha")
@@ -43,17 +57,74 @@ texture = ExtResource("6_3u7xm")
 
 [node name="screen_border" type="Sprite2D" parent="." unique_id=574611645]
 self_modulate = Color(1, 1, 1, 0.4745098)
+position = Vector2(23, 21)
 scale = Vector2(0.94483566, 0.9299883)
 texture = ExtResource("2_yxx3c")
 centered = false
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=83099023]
-offset_right = 800.0
-offset_bottom = 800.0
+[node name="Panel" type="Panel" parent="." unique_id=164250093]
+custom_minimum_size = Vector2(320, 360)
+offset_left = 230.0
+offset_top = 276.0
+offset_right = 550.0
+offset_bottom = 636.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_woa3c")
 
-[node name="Label" type="Label" parent="CenterContainer" unique_id=91336744]
+[node name="CenterContainer" type="CenterContainer" parent="Panel" unique_id=83099023]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Panel/CenterContainer" unique_id=1151479401]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/CenterContainer/VBox" unique_id=91336744]
 visible = false
 layout_mode = 2
+
+[node name="launches_lbl" type="Label" parent="Panel/CenterContainer/VBox" unique_id=2132609987]
+layout_mode = 2
+text = "launches"
+
+[node name="perfects_lbl" type="Label" parent="Panel/CenterContainer/VBox" unique_id=1887008585]
+layout_mode = 2
+text = "perfects"
+
+[node name="thanks" type="Label" parent="Panel/CenterContainer/VBox" unique_id=1694397104]
+layout_mode = 2
+text = "Thank you for your service."
+
+[node name="score_lbl" type="Label" parent="Panel/CenterContainer/VBox" unique_id=993716861]
+layout_mode = 2
+text = "score"
+
+[node name="spacer" type="HSeparator" parent="Panel/CenterContainer/VBox" unique_id=1431007379]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="payout" type="Label" parent="Panel/CenterContainer/VBox" unique_id=560187433]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Payout tiers"
+
+[node name="bests" type="Label" parent="Panel/CenterContainer/VBox" unique_id=437844096]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(40, 0)
+text = "Platinum:     $33
+Gold:             $25
+Silver:           $18
+Bronze:        $10"
+
+[node name="you_suck" type="Label" parent="Panel/CenterContainer/VBox" unique_id=1387986666]
+visible = false
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(40, 0)
+text = "(you)"
 
 [node name="mini_wait" type="Timer" parent="." unique_id=275485859]
 one_shot = true
@@ -74,3 +145,35 @@ position = Vector2(6, 691.00006)
 scale = Vector2(0.93920773, 1.1907165)
 texture = ExtResource("10_woa3c")
 centered = false
+
+[node name="markers" type="Node2D" parent="." unique_id=967407555]
+
+[node name="plat" type="Sprite2D" parent="markers" unique_id=2116701559]
+visible = false
+position = Vector2(278.59998, 488.8)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11_dd2jf")
+
+[node name="gold" type="Sprite2D" parent="markers" unique_id=1739077057]
+visible = false
+position = Vector2(278.59998, 516.8)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11_dd2jf")
+
+[node name="silver" type="Sprite2D" parent="markers" unique_id=795629171]
+visible = false
+position = Vector2(279.59998, 543.8)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11_dd2jf")
+
+[node name="bronze" type="Sprite2D" parent="markers" unique_id=1044914114]
+visible = false
+position = Vector2(278.59998, 571.8)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11_dd2jf")
+
+[node name="you" type="Sprite2D" parent="markers" unique_id=1971228953]
+visible = false
+position = Vector2(277.8, 597)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11_dd2jf")
