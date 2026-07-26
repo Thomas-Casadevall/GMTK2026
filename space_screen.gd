@@ -25,6 +25,7 @@ var backgrounds := [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#$ground_pos/Path2D/PathFollow2D.rotation = -PI/2  # Very important, otherwise the anmiation sets a dumb rotation value
 	var background = backgrounds[randi() % backgrounds.size()]
 	$background.texture = background
 	$Countdown_container/Countdown_label.text = "Construction..."
@@ -38,8 +39,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if current_state ==	STATE.countdown:
-		# Updat timer
-		#var time = $COUNTDOWN.wait_time if $COUNTDOWN.is_stopped() else $COUNTDOWN.time_left
 		var time = $COUNTDOWN.time_left
 		$Countdown_container/Countdown_label.text = str(ceil(time)).pad_decimals(0)
 	return
@@ -69,7 +68,7 @@ func constructed() -> void:
 	print("construction finished !")	
 	$Countdown_container/Countdown_label.text = str($COUNTDOWN.wait_time -1)
 	$COUNTDOWN.start()
-	$ground_pos/Rocket/AnimatedSprite2D.play()
+	$ground_pos/Path2D/PathFollow2D/Rocket.start_smoke()
 	current_state = STATE.countdown
 
 func space_key_pressed() -> bool:
@@ -80,9 +79,8 @@ func space_key_pressed() -> bool:
 			print("rocket envoyee")
 			$Countdown_container/Countdown_label.text = "Launched !"
 			GlobalSignalHandler.emit_signal("rocket_launched")
-			#$ground_pos/Sprite_fusee.launch()
-			$ground_pos/Rocket.launch()
-
+			$AnimationPlayer.play("rocket_launch")
+			$background.shake()
 			# next state
 			is_done()
 		return true

@@ -74,20 +74,28 @@ animations = [{
 script = ExtResource("1_tpb7v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=496013835]
-position = Vector2(-2, 0)
+position = Vector2(-7.6293945e-06, -20.000015)
+rotation = 1.5707964
 scale = Vector2(1.4, 1.4)
 sprite_frames = SubResource("SpriteFrames_mg04i")
 frame = 5
 frame_progress = 0.84299654
+offset = Vector2(-1.428566, 142.14285)
 
 [node name="turbo" type="Sprite2D" parent="." unique_id=315743173]
-position = Vector2(-1, -236)
+position = Vector2(0, -20)
+rotation = 1.5707964
 texture = ExtResource("1_r2l15")
+offset = Vector2(-1, -37)
 
 [node name="cabin" type="Sprite2D" parent="." unique_id=1064977363]
-position = Vector2(-1, -235)
+position = Vector2(0, -20)
+rotation = 1.5707964
 texture = ExtResource("2_tpb7v")
+offset = Vector2(-1, -36)
 
 [node name="hat" type="Sprite2D" parent="." unique_id=956678650]
-position = Vector2(-1, -241)
+position = Vector2(0, -20)
+rotation = 1.5707964
 texture = ExtResource("3_cum1y")
+offset = Vector2(-1, -42)
