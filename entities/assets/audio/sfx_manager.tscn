@@ -56,12 +56,15 @@ bus = &"SFX"
 
 [node name="Perfect" type="AudioStreamPlayer" parent="." unique_id=1389641103]
 stream = ExtResource("13_ms3gr")
+volume_db = 1.5
 bus = &"SFX"
 
 [node name="MildPerfect" type="AudioStreamPlayer" parent="." unique_id=504779047]
 stream = ExtResource("14_xvfcm")
+volume_db = 1.5
 bus = &"SFX"
 
 [node name="BadTiming" type="AudioStreamPlayer" parent="." unique_id=1707673252]
 stream = ExtResource("15_braak")
+volume_db = 1.5
 bus = &"SFX"
