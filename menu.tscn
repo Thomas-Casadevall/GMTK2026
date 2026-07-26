@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cw1b4se34kfvb" path="res://rocket.tscn" id="6_kk3ma"]
 [ext_resource type="AudioStream" uid="uid://d3mmxbh6rgwfq" path="res://entities/assets/audio/music/menu_music.ogg" id="7_ecwwl"]
 [ext_resource type="AudioStream" uid="uid://c05wpjr75ks5n" path="res://entities/assets/audio/sfx/amb_heavy_01.wav" id="8_kk3ma"]
+[ext_resource type="Texture2D" uid="uid://cs7jqamqc1t2d" path="res://entities/assets/images/menu/towerdecontrole.png" id="9_nrnbx"]
 
 [sub_resource type="Animation" id="Animation_cvb50"]
 tracks/0/type = "value"
@@ -120,6 +121,7 @@ texture = ExtResource("3_ytr4m")
 libraries/ = SubResource("AnimationLibrary_nrnbx")
 
 [node name="ground_pos" type="Marker2D" parent="." unique_id=714810748]
+visible = false
 position = Vector2(414, 524)
 
 [node name="Path2D" type="Path2D" parent="ground_pos" unique_id=1274783727]
@@ -143,6 +145,7 @@ one_shot = true
 autostart = true
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=890233714]
+visible = false
 custom_minimum_size = Vector2(800, 300)
 layout_mode = 0
 offset_right = 40.0
@@ -162,3 +165,8 @@ autoplay = true
 [node name="Ambience" type="AudioStreamPlayer" parent="." unique_id=856712361]
 stream = ExtResource("8_kk3ma")
 autoplay = true
+
+[node name="title" type="Sprite2D" parent="." unique_id=579949479]
+position = Vector2(405, 351)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("9_nrnbx")
