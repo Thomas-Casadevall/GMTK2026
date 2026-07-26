@@ -50,10 +50,12 @@ bus = &"SFX"
 
 [node name="StartSound" type="AudioStreamPlayer" parent="." unique_id=1855293607]
 stream = ExtResource("11_jihy5")
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="GameOver" type="AudioStreamPlayer" parent="." unique_id=736325656]
 stream = ExtResource("12_braak")
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="Perfect" type="AudioStreamPlayer" parent="." unique_id=1389641103]
