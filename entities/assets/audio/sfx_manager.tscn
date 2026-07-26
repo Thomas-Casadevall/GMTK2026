@@ -10,6 +10,10 @@
 [ext_resource type="AudioStream" uid="uid://dtktsgxj22t0n" path="res://entities/assets/audio/sfx/rocket_crash_02.wav" id="8_1sqx1"]
 [ext_resource type="AudioStream" uid="uid://dye60xm05wxb5" path="res://entities/assets/audio/sfx/rocket_crash_03.wav" id="9_iqmj1"]
 [ext_resource type="AudioStream" uid="uid://d3atw00wavgtm" path="res://entities/assets/audio/sfx/rocket_crash_04.wav" id="10_8bdgr"]
+[ext_resource type="AudioStream" uid="uid://dlejg1skpoww3" path="res://entities/assets/audio/sfx/ui_mainmenu_start.wav" id="11_jihy5"]
+[ext_resource type="AudioStream" uid="uid://bcptvte0wl6ou" path="res://entities/assets/audio/sfx/ui_mainmenu_exit.wav" id="12_braak"]
+[ext_resource type="AudioStream" uid="uid://ctkncc25cdp13" path="res://entities/assets/audio/sfx/timingfeedback_perfect_v2.wav" id="13_ms3gr"]
+[ext_resource type="AudioStream" uid="uid://dad57peogby26" path="res://entities/assets/audio/sfx/timingfeedback_good_v1.wav" id="14_xvfcm"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lya80"]
 streams_count = 4
@@ -39,4 +43,20 @@ bus = &"SFX"
 
 [node name="RocketExplode" type="AudioStreamPlayer" parent="." unique_id=1243282560]
 stream = SubResource("AudioStreamRandomizer_1shtp")
+bus = &"SFX"
+
+[node name="StartSound" type="AudioStreamPlayer" parent="." unique_id=1855293607]
+stream = ExtResource("11_jihy5")
+bus = &"SFX"
+
+[node name="GameOver" type="AudioStreamPlayer" parent="." unique_id=736325656]
+stream = ExtResource("12_braak")
+bus = &"SFX"
+
+[node name="Perfect" type="AudioStreamPlayer" parent="." unique_id=1389641103]
+stream = ExtResource("13_ms3gr")
+bus = &"SFX"
+
+[node name="MildPerfect" type="AudioStreamPlayer" parent="." unique_id=504779047]
+stream = ExtResource("14_xvfcm")
 bus = &"SFX"
