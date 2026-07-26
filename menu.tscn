@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://3ypv3308bhc8"]
+
+[ext_resource type="Script" uid="uid://byet16ajbwvpl" path="res://menu.gd" id="1_l48gv"]
+[ext_resource type="Texture2D" uid="uid://brn44yud2e3kb" path="res://entities/assets/images/bg/SCREEN.png" id="1_mae5d"]
+[ext_resource type="Texture2D" uid="uid://bx37tyokneqxa" path="res://entities/assets/images/bg/Control_panel.png" id="2_4hy44"]
+[ext_resource type="Texture2D" uid="uid://davkbowxpww6l" path="res://entities/assets/images/bg/BG-var2.jpg" id="2_ecwwl"]
+[ext_resource type="Texture2D" uid="uid://csdmqodyjyc47" path="res://entities/assets/images/bg/KEY_Space_Unpress.png" id="3_ytr4m"]
+[ext_resource type="PackedScene" uid="uid://cw1b4se34kfvb" path="res://rocket.tscn" id="6_kk3ma"]
+
+[sub_resource type="Animation" id="Animation_cvb50"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ground_pos/Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ground_pos/Path2D/PathFollow2D/Rocket:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.8)]
+}
+
+[sub_resource type="Animation" id="Animation_1shtp"]
+resource_name = "perfect"
+
+[sub_resource type="Animation" id="Animation_ttsuj"]
+resource_name = "rocket_launch"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ground_pos/Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ground_pos/Path2D/PathFollow2D/Rocket:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nrnbx"]
+_data = {
+&"RESET": SubResource("Animation_cvb50"),
+&"perfect": SubResource("Animation_1shtp"),
+&"rocket_launch": SubResource("Animation_ttsuj")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_iqepy"]
+_data = {
+"points": PackedVector2Array(2.5661993, 83.538994, 0, 0, 399, 661, 0, 0, -1.1289477, -147.77344, 401, 563, -95.29761, 87.978264, 23.745499, -20.701685, 532, 203, 0, 0, 0, 0, 595, 177, -10.263161, -0.513158, 10.263161, 0.513158, 626, 176, 0, 0, 20.32106, 9.031582, 645, 182, -1.077632, -10.776319, 0.513158, 5.1315804, 671, 221, 3.078948, -8.723686, -5.3368435, 14.9328985, 667, 267, 12.315793, 0, -14.009214, 0, 626, 296, 1.077632, 12.982899, -1.077632, -15.240794, 577, 267, -4.105264, 4.105264, 4.105264, -4.105264, 598, 216, 0, 0, 0, 0, 620, 204)
+}
+point_count = 12
+
+[node name="Menu" type="Control" unique_id=1953338222]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l48gv")
+
+[node name="background" type="Sprite2D" parent="." unique_id=1482847320]
+position = Vector2(400, 400)
+texture = ExtResource("2_ecwwl")
+
+[node name="border" type="Sprite2D" parent="." unique_id=1848457329]
+top_level = true
+position = Vector2(399.1388, 399.62897)
+scale = Vector2(0.93864137, 0.94368964)
+texture = ExtResource("1_mae5d")
+
+[node name="keyboards" type="Sprite2D" parent="." unique_id=918701436]
+top_level = true
+position = Vector2(-3, 715.00006)
+scale = Vector2(0.95, 0.95)
+texture = ExtResource("2_4hy44")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1386984539]
+top_level = true
+position = Vector2(552.99994, 753.99994)
+scale = Vector2(0.9608161, 0.9608161)
+texture = ExtResource("3_ytr4m")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1785552164]
+libraries/ = SubResource("AnimationLibrary_nrnbx")
+
+[node name="ground_pos" type="Marker2D" parent="." unique_id=714810748]
+position = Vector2(414, 524)
+
+[node name="Path2D" type="Path2D" parent="ground_pos" unique_id=1274783727]
+position = Vector2(-399, -663)
+curve = SubResource("Curve2D_iqepy")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="ground_pos/Path2D" unique_id=2108271366]
+position = Vector2(399, 661)
+rotation = -1.550391
+
+[node name="Rocket" parent="ground_pos/Path2D/PathFollow2D" unique_id=829483439 instance=ExtResource("6_kk3ma")]
+position = Vector2(17.792227, 38.64501)
+rotation = -0.020105544
+scale = Vector2(0.8, 0.8)
+
+[node name="animation_loop" type="Timer" parent="." unique_id=269244301]
+
+[node name="start_debug" type="Timer" parent="." unique_id=1898696851]
+wait_time = 5.0
+one_shot = true
+autostart = true

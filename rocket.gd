@@ -67,3 +67,8 @@ func construct_step() -> void:
 	construction_step += 1
 	if construction_step >= constrution_order.size():
 		emit_signal("construction_done")
+		
+func force_visible() -> void:
+	$AnimatedSprite2D.visible = true
+	for part in constrution_order:
+		part.visible = true
