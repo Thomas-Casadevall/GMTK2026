@@ -78,7 +78,9 @@ func on_rocket_crashed():
 	game_over("no rocket to launch !")
 
 func game_over(cause):
+	GlobalVariables.game_over_reason = cause
 	print ("GAME OVER : ", cause)
+	get_tree().change_scene_to_file("res://game_over.tscn")
 
 func _on_beat_timeout() -> void:
 	$AnimationPlayer.play("beat_visualization")

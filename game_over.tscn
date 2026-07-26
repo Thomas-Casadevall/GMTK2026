@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://brdxmrbp0qmf2"]
+
+[ext_resource type="Texture2D" uid="uid://brn44yud2e3kb" path="res://entities/assets/images/bg/SCREEN.png" id="1_y26ei"]
+[ext_resource type="Script" uid="uid://j1tjjqvxk0ul" path="res://game_over.gd" id="1_yxx3c"]
+
+[node name="Game Over" type="Node2D" unique_id=464555036]
+script = ExtResource("1_yxx3c")
+
+[node name="screen_border" type="Sprite2D" parent="." unique_id=574611645]
+scale = Vector2(0.94483566, 0.9299883)
+texture = ExtResource("1_y26ei")
+centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=83099023]
+offset_right = 800.0
+offset_bottom = 800.0
+
+[node name="Label" type="Label" parent="CenterContainer" unique_id=91336744]
+layout_mode = 2
