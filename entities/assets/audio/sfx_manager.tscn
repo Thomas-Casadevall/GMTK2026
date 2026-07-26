@@ -73,8 +73,10 @@ bus = &"SFX"
 
 [node name="AmbienceGame" type="AudioStreamPlayer" parent="." unique_id=1980874069]
 stream = ExtResource("16_xvfcm")
+volume_db = 1.5
 bus = &"SFX"
 
 [node name="AmbienceMenu" type="AudioStreamPlayer" parent="." unique_id=933309973]
 stream = ExtResource("17_kk652")
+volume_db = 1.5
 bus = &"SFX"
