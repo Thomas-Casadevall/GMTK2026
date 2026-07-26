@@ -15,6 +15,8 @@
 [ext_resource type="AudioStream" uid="uid://ctkncc25cdp13" path="res://entities/assets/audio/sfx/timingfeedback_perfect_v2.wav" id="13_ms3gr"]
 [ext_resource type="AudioStream" uid="uid://dad57peogby26" path="res://entities/assets/audio/sfx/timingfeedback_good_v1.wav" id="14_xvfcm"]
 [ext_resource type="AudioStream" uid="uid://4gdlaqueh2s2" path="res://entities/assets/audio/sfx/timingfeedback_bad_v1.wav" id="15_braak"]
+[ext_resource type="AudioStream" uid="uid://er5qjwrhurl3" path="res://entities/assets/audio/sfx/amb_game_01.wav" id="16_xvfcm"]
+[ext_resource type="AudioStream" uid="uid://c05wpjr75ks5n" path="res://entities/assets/audio/sfx/amb_heavy_01.wav" id="17_kk652"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lya80"]
 streams_count = 4
@@ -65,3 +67,9 @@ bus = &"SFX"
 [node name="BadTiming" type="AudioStreamPlayer" parent="." unique_id=1707673252]
 stream = ExtResource("15_braak")
 bus = &"SFX"
+
+[node name="AmbienceGame" type="AudioStreamPlayer" parent="." unique_id=1980874069]
+stream = ExtResource("16_xvfcm")
+
+[node name="AmbienceMenu" type="AudioStreamPlayer" parent="." unique_id=933309973]
+stream = ExtResource("17_kk652")
