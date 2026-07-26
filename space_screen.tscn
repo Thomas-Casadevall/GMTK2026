@@ -10,12 +10,29 @@
 [ext_resource type="Texture2D" uid="uid://b3q2cvwluln4c" path="res://entities/assets/images/bg/HILL_var1.png" id="8_apxuq"]
 [ext_resource type="Texture2D" uid="uid://2vnpojw3toli" path="res://entities/assets/images/bg/Perfect.png" id="9_1shtp"]
 [ext_resource type="Texture2D" uid="uid://brn44yud2e3kb" path="res://entities/assets/images/bg/SCREEN.png" id="10_ann15"]
+[ext_resource type="Texture2D" uid="uid://k2guafbx00e5" path="res://entities/assets/images/bg/Too_Early.png" id="11_umoqg"]
 
 [sub_resource type="Curve2D" id="Curve2D_7tajh"]
 _data = {
 "points": PackedVector2Array(2.5661993, 83.538994, 0, 0, 399, 661, 0, 0, -1.1289477, -147.77344, 401, 563, -95.29761, 87.978264, 23.745499, -20.701685, 532, 203, 0, 0, 0, 0, 595, 177, -10.263161, -0.513158, 10.263161, 0.513158, 626, 176, 0, 0, 20.32106, 9.031582, 645, 182, -1.077632, -10.776319, 0.513158, 5.1315804, 671, 221, 3.078948, -8.723686, -5.3368435, 14.9328985, 667, 267, 12.315793, 0, -14.009214, 0, 626, 296, 1.077632, 12.982899, -1.077632, -15.240794, 577, 267, -4.105264, 4.105264, 4.105264, -4.105264, 598, 216, 0, 0, 0, 0, 620, 204)
 }
 point_count = 12
+
+[sub_resource type="Animation" id="Animation_jgggg"]
+resource_name = "Blinking"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("warning:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.50000006, 0.6666667, 0.8333334, 1, 1.1666666, 1.3333333, 1.5, 1.6666666, 1.8333334, 1.9999999),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_cvb50"]
 tracks/0/type = "value"
@@ -71,7 +88,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("perfect:top_level")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -112,6 +129,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jfvg5"]
 _data = {
+&"Blinking": SubResource("Animation_jgggg"),
 &"RESET": SubResource("Animation_cvb50"),
 &"perfect": SubResource("Animation_1shtp"),
 &"rocket_launch": SubResource("Animation_ttsuj")
@@ -209,3 +227,9 @@ position = Vector2(409, 389)
 rotation = -0.5854887
 scale = Vector2(0.2210687, 0.2210687)
 texture = ExtResource("9_1shtp")
+
+[node name="warning" type="Sprite2D" parent="." unique_id=77857741]
+visible = false
+position = Vector2(413, 417)
+scale = Vector2(1.1666666, 1.1666666)
+texture = ExtResource("11_umoqg")

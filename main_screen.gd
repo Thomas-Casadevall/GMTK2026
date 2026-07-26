@@ -28,7 +28,6 @@ func _ready() -> void:
 	GlobalWindowsHandler.available_panels.append(self)
 	GlobalVariables.main_screen = self
 	
-	
 	$SFXPlayer.stream = start_sound
 	$SFXPlayer.play()
 	
@@ -78,14 +77,27 @@ func _unhandled_input(event):
 			for scene in GlobalVariables.list_space_scenes:
 				if scene.space_key_pressed(timing):
 					at_least_one_launched = true
-					if timing == GlobalVariables.PRESSED.before_beat or best_launch == GlobalVariables.PRESSED.perfect_after:
-						best_launch = GlobalVariables.PRESSED.before_beat
+					if timing == GlobalVariables.PRESSED.perfect_before or timing == GlobalVariables.PRESSED.perfect_after:
+						best_launch = GlobalVariables.PRESSED.perfect_before
+						print("PERFECT")
 						scene.perfect_animation()
 						
 					# if there is no perfect launch timing, set the state to timing
 					# (GlobalVariables.PRESSED.after_beat or GlobalVariables.PRESSED.before_beat)
-					elif best_launch != GlobalVariables.PRESSED.before_beat and best_launch != GlobalVariables.PRESSED.perfect_after:
+					elif timing == GlobalVariables.PRESSED.before_beat:
+						if best_launch != GlobalVariables.PRESSED.perfect_before and best_launch != GlobalVariables.PRESSED.perfect_after:
+							best_launch = timing
+						scene.blink_before_animation()
+						print("TOO EARLY")
+					elif timing == GlobalVariables.PRESSED.after_beat:
+						if best_launch != GlobalVariables.PRESSED.perfect_before and best_launch != GlobalVariables.PRESSED.perfect_after:
+							best_launch = timing
 						best_launch = timing
+						scene.blink_after_animation()
+						print("TOO LATE")
+					else:
+						print("TOO WHAT ??")
+						print(timing)
 				
 			if (!at_least_one_launched):
 				game_over("no rocket to launch !")
