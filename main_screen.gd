@@ -10,13 +10,15 @@ var game_over_sound = preload("res://entities/assets/audio/sfx/ui_mainmenu_exit.
 var perfect_timing_sound = preload("res://entities/assets/audio/sfx/timingfeedback_perfect_v1.wav")
 var mild_perfect_timing_sound = preload("res://entities/assets/audio/sfx/timingfeedback_good_v1.wav")
 
+var unpressed_space = preload("res://entities/assets/images/bg/KEY_Space_Unpress.png")
+var pressed_space = preload("res://entities/assets/images/bg/KEY_Space_Press.png")
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("READY")
 	GlobalSignalHandler.rocket_launched.connect(on_rocket_launched)	
 	GlobalWindowsHandler.available_panels.append(self)
-	$SFXPlayer.stream = start_sound
-	$SFXPlayer.play()
 	
 	add_screen()
 
@@ -26,6 +28,9 @@ func add_screen():
 		return  # No sceen created :(
 	print("rocket_scene.init_time")
 	rocket_scene.init_time(TOTAL_TIME, 1, fenetre, 4, $beat)
+	
+	$SFXPlayer.stream = start_sound
+	$SFXPlayer.play()
 	#$beat.timeout.connect(rocket_scene.sync)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,7 +39,9 @@ func _process(delta: float) -> void:
 
 func _unhandled_input(event):
 	if event is InputEventKey:
+		var best_launch = null
 		if event.pressed and event.keycode == KEY_SPACE:
+			$Sprite2D2.texture = pressed_space
 			var at_least_one_launched:bool = false;
 			# si c'est dans la fenetre on balance au scenes filles
 			var timing : GlobalVariables.PRESSED = GlobalVariables.PRESSED.off
@@ -55,14 +62,27 @@ func _unhandled_input(event):
 				if scene.space_key_pressed(timing):
 					at_least_one_launched = true
 					if timing == GlobalVariables.PRESSED.perfect:
-						$SFXPlayer.stream = perfect_timing_sound
-						$SFXPlayer.play()
-					elif timing == GlobalVariables.PRESSED.before_beat or timing == GlobalVariables.PRESSED.after_beat :
-						$SFXPlayer.stream = mild_perfect_timing_sound
-						$SFXPlayer.play()
+						best_launch = GlobalVariables.PRESSED.perfect
 						
+					# if there is no perfect launch timing, set the state to timing
+					# (GlobalVariables.PRESSED.after_beat or GlobalVariables.PRESSED.before_beat)
+					elif best_launch != GlobalVariables.PRESSED.perfect:
+						best_launch = timing
+				
 			if (!at_least_one_launched):
 				game_over("no rocket to launch !")
+			else:
+				if best_launch == GlobalVariables.PRESSED.perfect:
+					$SFXPlayer.stream = perfect_timing_sound
+					$SFXPlayer.play()
+				else:
+					$SFXPlayer.stream = mild_perfect_timing_sound
+					$SFXPlayer.play()
+					
+					
+				
+		elif event.is_released() and event.keycode == KEY_SPACE:
+			$Sprite2D2.texture = unpressed_space
 
 func on_rocket_launched():
 	print("LAUNCHED")
