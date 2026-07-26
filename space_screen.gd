@@ -41,10 +41,7 @@ func _process(_delta: float) -> void:
 		# Updat timer
 		#var time = $COUNTDOWN.wait_time if $COUNTDOWN.is_stopped() else $COUNTDOWN.time_left
 		var time = $COUNTDOWN.time_left
-		var decimal:int = 0
-		if time <= 3 :
-			decimal = 2
-		$Countdown_container/Countdown_label.text = str(time).pad_decimals(decimal)
+		$Countdown_container/Countdown_label.text = str(ceil(time)).pad_decimals(0)
 	return
 
 

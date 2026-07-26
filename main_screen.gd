@@ -1,6 +1,6 @@
 extends Node2D
 
-var TOTAL_TIME: float = 6;
+var TOTAL_TIME: float = 5;
 var fenetre: float = 0.2;
 var resize_factor = 1
 
