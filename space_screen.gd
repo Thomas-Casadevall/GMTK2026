@@ -23,10 +23,28 @@ var current_state:STATE = STATE.wait_init;
 
 var scene_resize_factor = 1
 
-var backgrounds := [
-	preload("res://entities/assets/images/bg/BG-var2.jpg"),
-	preload("res://entities/assets/images/bg/BG-var3.jpg"),
-	preload("res://entities/assets/images/bg/BG-var4.jpg")
+var skybox_textures := [
+	preload("res://entities/assets/images/bg/SKY_var1.png"),
+	preload("res://entities/assets/images/bg/SKY_var2.png"),
+	preload("res://entities/assets/images/bg/SKY_var3.png")
+]
+
+var cloud_textures := [
+	preload("res://entities/assets/images/bg/CLOUDS_var1.png"),
+	preload("res://entities/assets/images/bg/CLOUDS_var2.png"),
+	preload("res://entities/assets/images/bg/CLOUDS_var3.png")
+]
+
+var ground_textures := [
+	preload("res://entities/assets/images/bg/GROUND_var1.png"),
+	preload("res://entities/assets/images/bg/GROUND_var2.png"),
+	preload("res://entities/assets/images/bg/GROUND_var3.png")
+]
+
+var hill_textures := [
+	preload("res://entities/assets/images/bg/HILL_var1.png"),
+	preload("res://entities/assets/images/bg/HILL_var2.png"),
+	preload("res://entities/assets/images/bg/HILL_var3.png")
 ]
 
 @onready var rocket_ref = $ground_pos/Path2D/PathFollow2D/Rocket
@@ -37,8 +55,12 @@ func _ready() -> void:
 	b_restart = beat_timer.instantiate()
 	b_construction = beat_timer.instantiate()
 	#$ground_pos/Path2D/PathFollow2D.rotation = -PI/2  # Very important, otherwise the anmiation sets a dumb rotation value
-	var background = backgrounds[randi() % backgrounds.size()]
-	$background.texture = background
+	$background/skybox.texture = skybox_textures.pick_random()
+	$background/clouds.texture = cloud_textures.pick_random()
+	$background/ground.texture = ground_textures.pick_random()
+	$background/mountains.visible = randi()%2
+	$background/hill.texture = hill_textures.pick_random()
+	
 	$Countdown_container/Countdown_label.text = ""
 	
 	# timer signal plug
@@ -93,7 +115,12 @@ func space_key_pressed() -> bool:
 			$Countdown_container/Countdown_label.text = "Launched!"
 			GlobalSignalHandler.emit_signal("rocket_launched")
 			$AnimationPlayer.play("rocket_launch")
-			$background.shake()
+			$background/skybox.shake()
+			$background/clouds.shake()
+			$background/ground.shake()
+			$background/mountains.shake()
+			$background/hill.shake()
+			rocket_ref.start_fire()
 			# next state
 			is_done()
 		return true

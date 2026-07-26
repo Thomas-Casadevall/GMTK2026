@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://buywpe6ek1v16"]
 
 [ext_resource type="Script" uid="uid://0trexfng4sdw" path="res://space_screen.gd" id="1_wkyds"]
-[ext_resource type="Texture2D" uid="uid://davkbowxpww6l" path="res://entities/assets/images/bg/BG-var2.jpg" id="2_cvb50"]
 [ext_resource type="Script" uid="uid://c85rubohax0rn" path="res://space_screen_background.gd" id="3_cvb50"]
+[ext_resource type="Texture2D" uid="uid://4fr3vosp77jj" path="res://entities/assets/images/bg/CLOUDS_var1.png" id="5_1shtp"]
+[ext_resource type="Texture2D" uid="uid://bjfncsin1g6fy" path="res://entities/assets/images/bg/SKY_var1.png" id="5_jfvg5"]
 [ext_resource type="PackedScene" uid="uid://cw1b4se34kfvb" path="res://rocket.tscn" id="5_ttsuj"]
+[ext_resource type="Texture2D" uid="uid://bwwsw4acrxt2o" path="res://entities/assets/images/bg/GROUND_var1.png" id="6_umoqg"]
+[ext_resource type="Texture2D" uid="uid://c1gtp0jd4ugur" path="res://entities/assets/images/bg/MOUNTAINS.png" id="7_jgggg"]
+[ext_resource type="Texture2D" uid="uid://b3q2cvwluln4c" path="res://entities/assets/images/bg/HILL_var1.png" id="8_apxuq"]
+[ext_resource type="Texture2D" uid="uid://brn44yud2e3kb" path="res://entities/assets/images/bg/SCREEN.png" id="10_ann15"]
 
 [sub_resource type="Curve2D" id="Curve2D_7tajh"]
 _data = {
@@ -75,10 +80,40 @@ _data = {
 [node name="space_screen" type="Node2D" unique_id=1275064]
 script = ExtResource("1_wkyds")
 
-[node name="background" type="Sprite2D" parent="." unique_id=1463751527]
-position = Vector2(400, 400)
-texture = ExtResource("2_cvb50")
+[node name="background" type="Node2D" parent="." unique_id=1823995704]
+
+[node name="skybox" type="Sprite2D" parent="background" unique_id=1833621519]
+texture = ExtResource("5_jfvg5")
+centered = false
 script = ExtResource("3_cvb50")
+
+[node name="clouds" type="Sprite2D" parent="background" unique_id=2086221480]
+texture = ExtResource("5_1shtp")
+centered = false
+script = ExtResource("3_cvb50")
+
+[node name="ground" type="Sprite2D" parent="background" unique_id=1178414617]
+position = Vector2(-2, 667)
+texture = ExtResource("6_umoqg")
+centered = false
+script = ExtResource("3_cvb50")
+
+[node name="mountains" type="Sprite2D" parent="background" unique_id=735172338]
+position = Vector2(0, 196)
+texture = ExtResource("7_jgggg")
+centered = false
+script = ExtResource("3_cvb50")
+
+[node name="hill" type="Sprite2D" parent="background" unique_id=1378992149]
+position = Vector2(17, 517)
+texture = ExtResource("8_apxuq")
+centered = false
+script = ExtResource("3_cvb50")
+
+[node name="screen_border" type="Sprite2D" parent="background" unique_id=1420199155]
+scale = Vector2(0.94483566, 0.9299883)
+texture = ExtResource("10_ann15")
+centered = false
 
 [node name="ground_pos" type="Marker2D" parent="." unique_id=924667353]
 position = Vector2(399, 524)
@@ -92,12 +127,13 @@ position = Vector2(399, 661)
 rotation = -1.550391
 
 [node name="Rocket" parent="ground_pos/Path2D/PathFollow2D" unique_id=829483439 instance=ExtResource("5_ttsuj")]
-position = Vector2(-1.9127808, -1.158081)
+position = Vector2(17.792227, 38.64501)
+rotation = -0.020105544
 scale = Vector2(0.8, 0.8)
 
 [node name="Countdown_container" type="HBoxContainer" parent="." unique_id=1108685891]
-offset_right = 794.0
-offset_bottom = 110.0
+offset_right = 802.0
+offset_bottom = 187.0
 alignment = 1
 
 [node name="Countdown_label" type="Label" parent="Countdown_container" unique_id=13551825]
