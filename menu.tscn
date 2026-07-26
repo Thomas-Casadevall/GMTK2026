@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://davkbowxpww6l" path="res://entities/assets/images/bg/BG-var2.jpg" id="2_ecwwl"]
 [ext_resource type="Texture2D" uid="uid://csdmqodyjyc47" path="res://entities/assets/images/bg/KEY_Space_Unpress.png" id="3_ytr4m"]
 [ext_resource type="PackedScene" uid="uid://cw1b4se34kfvb" path="res://rocket.tscn" id="6_kk3ma"]
+[ext_resource type="AudioStream" uid="uid://d3mmxbh6rgwfq" path="res://entities/assets/audio/music/menu_music.ogg" id="7_ecwwl"]
+[ext_resource type="AudioStream" uid="uid://c05wpjr75ks5n" path="res://entities/assets/audio/sfx/amb_heavy_01.wav" id="8_kk3ma"]
 
 [sub_resource type="Animation" id="Animation_cvb50"]
 tracks/0/type = "value"
@@ -152,3 +154,11 @@ text = "PRESS SPACE
 TO SPACE !"
 label_settings = SubResource("LabelSettings_eae6q")
 horizontal_alignment = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=974043744]
+stream = ExtResource("7_ecwwl")
+autoplay = true
+
+[node name="Ambience" type="AudioStreamPlayer" parent="." unique_id=856712361]
+stream = ExtResource("8_kk3ma")
+autoplay = true
