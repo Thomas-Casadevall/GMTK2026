@@ -10,10 +10,7 @@ func _ready() -> void:
 	$CenterContainer/Label.text = GlobalVariables.game_over_reason
 	$mini_wait.start()
 	$mini_wait.wait_time = 1
-	
-	
-	$SFXPlayer.stream = game_over_sound
-	$SFXPlayer.play()
+	sfx_manager.play_game_over()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
