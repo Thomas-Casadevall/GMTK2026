@@ -1,7 +1,7 @@
 extends Node2D
 
 var TOTAL_TIME: float = 6;
-var fenetre: float = 0.1;
+var fenetre: float = 0.2;
 var resize_factor = 1
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +18,7 @@ func add_screen():
 	
 	rocket_scene.init_time(TOTAL_TIME, 1, fenetre, 2)
 	$beat.timeout.connect(rocket_scene.sync)
+	Engine.time_scale
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -27,6 +28,7 @@ func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_SPACE:
 			var at_least_one_launched:bool = false;
+			print("il reste ", $beat.time_left)
 			# si c'est dans la fenetre on balance au scenes filles
 			if $beat.time_left < fenetre or $beat.time_left > 1 - fenetre:
 				for scene in GlobalVariables.list_space_scenes:

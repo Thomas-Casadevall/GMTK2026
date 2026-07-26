@@ -88,7 +88,6 @@ script = ExtResource("1_tjn2e")
 
 [node name="beat" type="Timer" parent="." unique_id=2122025385]
 autostart = true
-ignore_time_scale = true
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=277144051]
 stream = SubResource("AudioStreamSynchronized_4x25n")

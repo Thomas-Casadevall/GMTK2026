@@ -31,7 +31,7 @@ func _ready() -> void:
 	
 	# timer signal plug
 	$Construction.timeout.connect(constructed)
-	$Restart.timeout.connect(start_construction)
+	$Restart.timeout.connect(wait_to_sync)
 	print("rocket ready")	
 
 
@@ -39,8 +39,12 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if current_state ==	STATE.countdown:
 		# Updat timer
-		var time = $COUNTDOWN.wait_time if $COUNTDOWN.is_stopped() else $COUNTDOWN.time_left
-		$Countdown_container/Countdown_label.text = str(floor(time)).pad_decimals(0)
+		#var time = $COUNTDOWN.wait_time if $COUNTDOWN.is_stopped() else $COUNTDOWN.time_left
+		var time = $COUNTDOWN.time_left
+		var decimal:int = 0
+		if time <= 3 :
+			decimal = 2
+		$Countdown_container/Countdown_label.text = str(time).pad_decimals(decimal)
 	return
 
 
@@ -53,6 +57,10 @@ func init_time(time_countdown :float, time_construction :float, time_fenetre :fl
 		print("init done !")
 		# Next state
 		current_state = STATE.wait_sync
+
+# just set the wait to sync status
+func wait_to_sync() -> void:
+	current_state = STATE.wait_sync
 
 func sync() -> void:
 	if current_state != STATE.wait_sync:
@@ -71,7 +79,7 @@ func space_key_pressed() -> bool:
 	print("scene received space")
 	if current_state == STATE.countdown:
 		print($COUNTDOWN.time_left)
-		if $COUNTDOWN.time_left < 1.0:
+		if $COUNTDOWN.time_left < 0.5:
 			print("rocket envoyee")
 			$Countdown_container/Countdown_label.text = "Launched !"
 			GlobalSignalHandler.emit_signal("rocket_launched")
@@ -97,9 +105,10 @@ func _on_countdown_timeout() -> void:
 	$Timeout_fenetre.start()
 
 func _on_timeout_fenetre_timeout() -> void:
-	rocket_exploded.emit()
-	print("Game over fenetre")
-	
-	# State change
-	is_done()
-	$Countdown_container/Countdown_label.text = "Crashed !"
+	if current_state == STATE.countdown:
+		rocket_exploded.emit()
+		print("Game over fenetre")
+		$Countdown_container/Countdown_label.text = "Crashed !"
+		
+		# State change
+		is_done()
