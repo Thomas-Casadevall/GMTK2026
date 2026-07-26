@@ -2,7 +2,7 @@ extends Node
 
 var list_space_scenes = []
 
-var MAX_SPACE_PANELS = 4
+var MAX_SPACE_PANELS = 7
 
 var MAINCLOCK_TIME:float = 1.0
 

@@ -122,9 +122,10 @@ Bronze:        $10"
 [node name="you_suck" type="Label" parent="Panel/CenterContainer/VBox" unique_id=1387986666]
 visible = false
 layout_mode = 2
+size_flags_horizontal = 3
 offset_transform_enabled = true
 offset_transform_position = Vector2(40, 0)
-text = "(you)"
+text = "(you):"
 
 [node name="mini_wait" type="Timer" parent="." unique_id=275485859]
 one_shot = true

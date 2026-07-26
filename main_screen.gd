@@ -18,6 +18,7 @@ func _ready() -> void:
 	GlobalWindowsHandler.available_panels = []
 	GlobalWindowsHandler.taken_panels = []
 	GlobalVariables.launch_count = 0;
+	GlobalVariables.perfect_launches_count = 0;
 	GlobalSignalHandler.rocket_launched.connect(on_rocket_launched)	
 	GlobalWindowsHandler.available_panels.append(self)
 	GlobalVariables.main_screen = self

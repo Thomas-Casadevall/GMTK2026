@@ -13,8 +13,9 @@ func _ready() -> void:
 	$Panel/CenterContainer/VBox/launches_lbl.text = "Today you launched " + str(GlobalVariables.launch_count) + " rockets."
 	$Panel/CenterContainer/VBox/perfects_lbl.text = "Of which " + str(GlobalVariables.perfect_launches_count) + " were perfect launches!"
 	
-	var score = GlobalVariables.launch_count + GlobalVariables.perfect_launches_count
+	var score:float = GlobalVariables.launch_count + GlobalVariables.perfect_launches_count *1.5
 	$Panel/CenterContainer/VBox/score_lbl.text = "Your pay today is $" + str(score) + "."
+	
 	
 	# Tiers
 	if score > tiers[0]:
@@ -25,9 +26,9 @@ func _ready() -> void:
 		$markers/silver.visible = true
 	elif score > tiers[3]:
 		$markers/bronze.visible = true
-	else:
-		$Panel/CenterContainer/VBox/you_suck.visible = true
-		$markers/you.visible = true
+	#else:
+		#$Panel/CenterContainer/VBox/you_suck.visible = true
+		#$markers/you.visible = true
 	sfx_manager.play_game_over()
 
 
