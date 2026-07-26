@@ -9,6 +9,7 @@ var start_sound_has_been_played : bool = false
 @onready var game_over = $GameOver
 @onready var perfect = $Perfect
 @onready var mild_perfect = $MildPerfect
+@onready var bad_timing = $BadTiming
 
 func on_new_game() -> void:
 	start_sound_has_been_played = false
@@ -35,3 +36,6 @@ func play_perfect() -> void:
 
 func play_mild_perfect() -> void:
 	mild_perfect.play()
+
+func play_bad_timing() -> void:
+	bad_timing.play()
