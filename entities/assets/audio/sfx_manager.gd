@@ -1,4 +1,3 @@
-class_name SFXManager
 extends AudioStreamPlayer
 
 var start_sound_has_been_played : bool = false

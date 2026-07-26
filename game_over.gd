@@ -1,6 +1,6 @@
 extends Node2D
 
-
+@onready var sfx_manager = SfxManager
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,4 +19,5 @@ func _unhandled_input(event):
 		print ($mini_wait.time_left)
 		if $mini_wait.time_left != 0:
 			return
+		sfx_manager.on_new_game()
 		get_tree().change_scene_to_file("res://main_screen.tscn")
