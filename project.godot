@@ -25,6 +25,7 @@ GlobalSignalHandler="*uid://b3aqr8uy2oddl"
 GlobalWindowsHandler="*uid://c1x84pxmn5y84"
 GlobalVariables="*uid://q4e0ygvpi3vx"
 BeatTimer="*uid://bihgecrjvpd5j"
+SfxManager="*uid://cduknk3wybx25"
 
 [display]
 
