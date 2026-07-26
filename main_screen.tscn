@@ -5,8 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://c62cs0p6r37b0" path="res://entities/assets/icon.svg" id="3_7a4el"]
 [ext_resource type="AudioStream" uid="uid://m7eprgn015nx" path="res://entities/assets/audio/music/playlist_synchronized.tres" id="4_4sclt"]
 [ext_resource type="Texture2D" uid="uid://brn44yud2e3kb" path="res://entities/assets/images/bg/SCREEN.png" id="6_ue4rx"]
-[ext_resource type="Texture2D" uid="uid://ccg34rj2kp1p" path="res://entities/assets/images/bg/BG_Screen.jpg" id="6_ywh4s"]
 [ext_resource type="Script" uid="uid://04sx5ls8xf2s" path="res://layered_audio.gd" id="7_sjiej"]
+[ext_resource type="Texture2D" uid="uid://bx37tyokneqxa" path="res://entities/assets/images/bg/Control_panel.png" id="7_ue4rx"]
+[ext_resource type="Texture2D" uid="uid://csdmqodyjyc47" path="res://entities/assets/images/bg/KEY_Space_Unpress.png" id="8_sjiej"]
 
 [sub_resource type="Animation" id="Animation_7a4el"]
 length = 0.001
@@ -102,11 +103,17 @@ texture = ExtResource("6_ue4rx")
 
 [node name="keyboards" type="Sprite2D" parent="." unique_id=985265398]
 top_level = true
-position = Vector2(5, 752)
-scale = Vector2(0.9383155, 0.24210526)
-texture = ExtResource("6_ywh4s")
+position = Vector2(-3, 715.00006)
+scale = Vector2(0.95, 0.95)
+texture = ExtResource("7_ue4rx")
 centered = false
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=62528176]
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1744423766]
+top_level = true
+position = Vector2(552.99994, 753.99994)
+scale = Vector2(0.9608161, 0.9608161)
+texture = ExtResource("8_sjiej")
 
 [connection signal="timeout" from="beat" to="." method="_on_beat_timeout"]
