@@ -31,11 +31,18 @@ var turbo_textures = [
 var construction_step := 0
 
 func _ready() -> void:
-	$hat.texture = hat_textures.pick_random()
-	$cabin.texture = cabin_textures.pick_random()
-	$turbo.texture = turbo_textures.pick_random()
+	if (GlobalVariables.rocket_parts_mixed):
+		$hat.texture = hat_textures.pick_random()
+		$cabin.texture = cabin_textures.pick_random()
+		$turbo.texture = turbo_textures.pick_random()
+	else :
+		var part_type:int = randi_range(0, hat_textures.size()-1)
+		$hat.texture = hat_textures[part_type]
+		$cabin.texture = cabin_textures[part_type]
+		$turbo.texture = turbo_textures[part_type]
 	set_process(false)
 	reset()
+
 
 func reset() -> void:
 	$AnimatedSprite2D.visible = false
