@@ -13,7 +13,7 @@ func _ready() -> void:
 	$Panel/CenterContainer/VBox/launches_lbl.text = "Today you launched " + str(GlobalVariables.launch_count) + " rockets."
 	$Panel/CenterContainer/VBox/perfects_lbl.text = "Of which " + str(GlobalVariables.perfect_launches_count) + " were perfect launches!"
 	
-	var score:float = GlobalVariables.launch_count + GlobalVariables.perfect_launches_count *1.5
+	var score:float = GlobalVariables.launch_count + GlobalVariables.perfect_launches_count
 	$Panel/CenterContainer/VBox/score_lbl.text = "Your pay today is $" + str(score) + "."
 	
 	
