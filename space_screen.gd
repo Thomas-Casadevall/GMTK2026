@@ -136,13 +136,10 @@ func is_done() -> void:
 	b_restart.start()
 
 func explode() -> void:
-	rocket_exploded.emit()
+	GlobalSignalHandler.emit_signal("rocket_exploded")
 	$Countdown_container/Countdown_label.text = "Crashed!"
 	sfx_manager.play_rocket_explode()
-	# State change
-	#$perfect.visible = true
-	#$AnimatedSprite2D.visible = true
-	#$AnimatedSprite2D.play()
+	
 	is_done()
 
 func start_construction() -> void:
@@ -161,4 +158,5 @@ func _on_timeout_fenetre_timeout() -> void:
 		explode()
 
 func perfect_animation():
-	$AnimationPlayer.play("perfect")
+	print("perfect animation")
+	$Perfect_animation.play("perfect")

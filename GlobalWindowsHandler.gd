@@ -17,12 +17,12 @@ func _ready() -> void:
 func add_screen():
 	# If there is no more panel available, create some and put old scene in 
 	if len(available_panels) == 0:
-		print("besoin de rajouter des panneaux")
+		#print("besoin de rajouter des panneaux")
 		# The goal is to find the scene with the least scene_resize_factor
 		var scene_to_split = GlobalVariables.list_space_scenes[0]
-		print("  Found a scene ",scene_to_split.name," (",scene_to_split.scene_resize_factor,")")
+		#print("  Found a scene ",scene_to_split.name," (",scene_to_split.scene_resize_factor,")")
 		for scene in GlobalVariables.list_space_scenes:
-			print("  Compared to a scene ",scene.name," (",scene.scene_resize_factor,")")
+			#print("  Compared to a scene ",scene.name," (",scene.scene_resize_factor,")")
 			if scene.scene_resize_factor < scene_to_split.scene_resize_factor:
 				scene_to_split = scene
 		var factor = scene_to_split.scene_resize_factor
@@ -49,22 +49,22 @@ func add_screen():
 		factor_of_new_scene =  panel_to_use.get_meta("resize_factor")
 	else:
 		factor_of_new_scene = panel_to_use.resize_factor
-	print("New factor ",factor_of_new_scene)
+	#print("New factor ",factor_of_new_scene)
 	var scaling_factor = 2/(pow(2,factor_of_new_scene))
-	print("Scaling by ", scaling_factor)
+	#print("Scaling by ", scaling_factor)
 	
 	new_scene.scale = Vector2(scaling_factor, scaling_factor)
 	new_scene.scene_resize_factor = factor_of_new_scene
 	GlobalVariables.list_space_scenes.append(new_scene)
-	print("Will use panel ",panel_to_use.name)
+	#print("Will use panel ",panel_to_use.name)
 	panel_to_use.add_child(new_scene)
-	print("Added scene ", new_scene.name)
+	#print("Added scene ", new_scene.name)
 	taken_panels.append(panel_to_use)
 	return new_scene
 
 func create_four_panels(factor):
-	print("  Creating 4 new panels with factor ", factor)
-	print("  Side size : ", 800/(factor*2))
+	#print("  Creating 4 new panels with factor ", factor)
+	#print("  Side size : ", 800/(factor*2))
 	var vbox = VBoxContainer.new()
 	# Il faut lui mettre la taille de sa node
 	vbox.size = Vector2(800/factor,800/factor)
@@ -118,10 +118,10 @@ func create_four_panels(factor):
 	control4.add_child(sprite4)
 	available_panels.append(control4)
 	
-	print(vbox.name, " created :")
-	print(" - ", control1.name)
-	print(" - ", control2.name)
-	print(" - ", control3.name)
-	print(" - ", control4.name)
+	#print(vbox.name, " created :")
+	#print(" - ", control1.name)
+	#print(" - ", control2.name)
+	#print(" - ", control3.name)
+	#print(" - ", control4.name)
 	
 	return vbox

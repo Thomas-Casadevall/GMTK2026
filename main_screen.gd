@@ -5,6 +5,11 @@ var fenetre: float = 0.2;
 var perfect_fenetre: float = fenetre/3;
 var resize_factor = 1
 
+var start_sound = preload("res://entities/assets/audio/sfx/ui_mainmenu_start.wav")
+
+var perfect_timing_sound = preload("res://entities/assets/audio/sfx/timingfeedback_perfect_v1.wav")
+var mild_perfect_timing_sound = preload("res://entities/assets/audio/sfx/timingfeedback_good_v1.wav")
+
 var unpressed_space = preload("res://entities/assets/images/bg/KEY_Space_Unpress.png")
 var pressed_space = preload("res://entities/assets/images/bg/KEY_Space_Press.png")
 
@@ -13,7 +18,7 @@ var pressed_space = preload("res://entities/assets/images/bg/KEY_Space_Press.png
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("READY")
-	
+		
 	# re init
 	GlobalVariables.list_space_scenes = []
 	GlobalWindowsHandler.available_panels = []
@@ -22,6 +27,10 @@ func _ready() -> void:
 	GlobalSignalHandler.rocket_launched.connect(on_rocket_launched)	
 	GlobalWindowsHandler.available_panels.append(self)
 	GlobalVariables.main_screen = self
+	
+	
+	$SFXPlayer.stream = start_sound
+	$SFXPlayer.play()
 	
 	add_screen()
 
@@ -107,6 +116,3 @@ func game_over(cause):
 	print ("GAME OVER : ", cause)
 	
 	get_tree().change_scene_to_file("res://game_over.tscn")
-
-func _on_beat_timeout() -> void:
-	$AnimationPlayer.play("beat_visualization")
