@@ -47,10 +47,43 @@ var hill_textures := [
 	preload("res://entities/assets/images/bg/HILL_var3.png")
 ]
 
+var rocket_launch_sfx = [
+	preload("res://entities/assets/audio/sfx/rocket_launch_v1_01.wav"),
+	preload("res://entities/assets/audio/sfx/rocket_launch_v1_02.wav"),
+	preload("res://entities/assets/audio/sfx/rocket_launch_v1_03.wav"),
+	preload("res://entities/assets/audio/sfx/rocket_launch_v1_04.wav")
+]
+
+var rocket_explode_sfx = [
+	preload("res://entities/assets/audio/sfx/rocket_crash_01.wav"),
+	preload("res://entities/assets/audio/sfx/rocket_crash_02.wav"),
+	preload("res://entities/assets/audio/sfx/rocket_crash_03.wav"),
+	preload("res://entities/assets/audio/sfx/rocket_crash_04.wav")
+	]
+	
+var new_rocket_sound = preload("res://entities/assets/audio/sfx/ui_mainmenu_select.wav")
+	
+#var rocket_launch_sfx = [
+	#preload(),
+	#preload(),
+	#preload(),
+	#preload()
+#var rocket_launch_sfx = [
+	#preload(),
+	#preload(),
+	#preload(),
+	#preload()
+#]
+
 @onready var rocket_ref = $ground_pos/Path2D/PathFollow2D/Rocket
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	$AudioStreamPlayer.stream = new_rocket_sound
+	$AudioStreamPlayer.play()
+	
+	
 	b_countdown = beat_timer.instantiate()
 	b_restart = beat_timer.instantiate()
 	b_construction = beat_timer.instantiate()
@@ -119,9 +152,13 @@ func space_key_pressed(pressed: GlobalVariables.PRESSED) -> bool:
 			$background/mountains.shake()
 			$background/hill.shake()
 			rocket_ref.start_fire()
+			
+			$AudioStreamPlayer.stream = rocket_launch_sfx.pick_random()
+			$AudioStreamPlayer.play()
+			
 			# next state
 			is_done()
-		return true
+			return true
 	return false
 
 func is_done() -> void:
@@ -131,6 +168,8 @@ func is_done() -> void:
 func explode() -> void:
 	rocket_exploded.emit()
 	$Countdown_container/Countdown_label.text = "Crashed!"
+	$AudioStreamPlayer.stream = rocket_explode_sfx.pick_random()
+	$AudioStreamPlayer.play()
 	# State change
 	is_done()
 

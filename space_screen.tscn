@@ -156,3 +156,5 @@ one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1260604172]
 libraries/ = SubResource("AnimationLibrary_jfvg5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1150984215]

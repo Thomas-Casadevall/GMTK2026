@@ -1,7 +1,7 @@
 extends Node
 
 var space_screen_scene = preload("res://space_screen.tscn")
-var loading_texture = preload("res://entities/assets/images/Screenshot2026-07-26003520.png")
+var loading_texture = preload("res://entities/assets/images/bg/No_signal_screen.jpg")
 
 var available_panels = []
 var taken_panels = []

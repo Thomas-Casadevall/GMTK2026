@@ -4,12 +4,20 @@ var TOTAL_TIME: float = 5;
 var fenetre: float = 0.2;
 var resize_factor = 1
 
+var start_sound = preload("res://entities/assets/audio/sfx/ui_mainmenu_start.wav")
+var game_over_sound = preload("res://entities/assets/audio/sfx/ui_mainmenu_exit.wav")
+
+var perfect_timing_sound = preload("res://entities/assets/audio/sfx/timingfeedback_perfect_v1.wav")
+var mild_perfect_timing_sound = preload("res://entities/assets/audio/sfx/timingfeedback_good_v1.wav")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("READY")
 	GlobalSignalHandler.rocket_launched.connect(on_rocket_launched)	
 	GlobalWindowsHandler.available_panels.append(self)
+	$SFXPlayer.stream = start_sound
+	$SFXPlayer.play()
+	
 	add_screen()
 
 func add_screen():
@@ -38,11 +46,21 @@ func _unhandled_input(event):
 				timing = GlobalVariables.PRESSED.perfect
 			# en dehors de la fenetre
 			else :
+				$SFXPlayer.stream = game_over_sound
+				$SFXPlayer.play()
+				
 				game_over("out of rythm")
 				return
 			for scene in GlobalVariables.list_space_scenes:
 				if scene.space_key_pressed(timing):
 					at_least_one_launched = true
+					if timing == GlobalVariables.PRESSED.perfect:
+						$SFXPlayer.stream = perfect_timing_sound
+						$SFXPlayer.play()
+					elif timing == GlobalVariables.PRESSED.before_beat or timing == GlobalVariables.PRESSED.after_beat :
+						$SFXPlayer.stream = mild_perfect_timing_sound
+						$SFXPlayer.play()
+						
 			if (!at_least_one_launched):
 				game_over("no rocket to launch !")
 

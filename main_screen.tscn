@@ -107,4 +107,6 @@ scale = Vector2(0.9383155, 0.24210526)
 texture = ExtResource("6_ywh4s")
 centered = false
 
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=62528176]
+
 [connection signal="timeout" from="beat" to="." method="_on_beat_timeout"]
