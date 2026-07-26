@@ -42,10 +42,12 @@ bus = &"SFX"
 
 [node name="RocketLaunch" type="AudioStreamPlayer" parent="." unique_id=983369179]
 stream = SubResource("AudioStreamRandomizer_lya80")
+volume_db = -2.0
 bus = &"SFX"
 
 [node name="RocketExplode" type="AudioStreamPlayer" parent="." unique_id=1243282560]
 stream = SubResource("AudioStreamRandomizer_1shtp")
+volume_db = -2.0
 bus = &"SFX"
 
 [node name="StartSound" type="AudioStreamPlayer" parent="." unique_id=1855293607]
@@ -80,5 +82,4 @@ bus = &"SFX"
 
 [node name="AmbienceMenu" type="AudioStreamPlayer" parent="." unique_id=933309973]
 stream = ExtResource("17_kk652")
-volume_db = 1.5
 bus = &"SFX"
