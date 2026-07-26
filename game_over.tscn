@@ -17,3 +17,6 @@ offset_bottom = 800.0
 
 [node name="Label" type="Label" parent="CenterContainer" unique_id=91336744]
 layout_mode = 2
+
+[node name="mini_wait" type="Timer" parent="." unique_id=275485859]
+one_shot = true
