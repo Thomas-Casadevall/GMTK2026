@@ -108,7 +108,7 @@ text = "10"
 [node name="COUNTDOWN" type="Timer" parent="." unique_id=1705806092]
 one_shot = true
 
-[node name="Timeout_fenetre" type="Timer" parent="." unique_id=433100304]
+[node name="timeout_fenetre" type="Timer" parent="." unique_id=433100304]
 one_shot = true
 
 [node name="Restart" type="Timer" parent="." unique_id=1829629830]
@@ -119,6 +119,3 @@ one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1260604172]
 libraries/ = SubResource("AnimationLibrary_jfvg5")
-
-[connection signal="timeout" from="COUNTDOWN" to="." method="_on_countdown_timeout"]
-[connection signal="timeout" from="Timeout_fenetre" to="." method="_on_timeout_fenetre_timeout"]

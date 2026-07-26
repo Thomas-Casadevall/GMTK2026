@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bm274nk7rg2xt"]
+
+[ext_resource type="Script" uid="uid://bihgecrjvpd5j" path="res://beat_timer.gd" id="1_uj4nx"]
+
+[node name="Node2D" type="Node2D" unique_id=1362067008]
+script = ExtResource("1_uj4nx")

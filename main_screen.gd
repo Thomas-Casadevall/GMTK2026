@@ -15,10 +15,9 @@ func add_screen():
 	var rocket_scene = GlobalWindowsHandler.add_screen()
 	if rocket_scene == null:
 		return  # No sceen created :(
-	
-	rocket_scene.init_time(TOTAL_TIME, 1, fenetre, 2)
-	$beat.timeout.connect(rocket_scene.sync)
-	Engine.time_scale
+	print("rocket_scene.init_time")
+	rocket_scene.init_time(TOTAL_TIME, 1, fenetre, 2, $beat)
+	#$beat.timeout.connect(rocket_scene.sync)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -77,12 +77,10 @@ autostart = true
 stream = ExtResource("2_0osx7")
 volume_db = -3.852
 autoplay = true
-bus = &"Music"
 
 [node name="CountdownPlayer" type="AudioStreamPlayer" parent="." unique_id=342852161]
 stream = ExtResource("4_4sclt")
 autoplay = true
-bus = &"Countdown"
 script = ExtResource("7_sjiej")
 rocket_times = Array[float]([2.0, 1.5, 1.0, 0.75, 0.5, 0.375])
 
