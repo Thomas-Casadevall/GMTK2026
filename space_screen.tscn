@@ -186,6 +186,7 @@ scale = Vector2(0.2210687, 0.2210687)
 texture = ExtResource("9_1shtp")
 
 [node name="screen_border" type="Sprite2D" parent="." unique_id=1420199155]
+modulate = Color(1, 1, 1, 0.33333334)
 scale = Vector2(0.94483566, 0.9299883)
 texture = ExtResource("10_ann15")
 centered = false
