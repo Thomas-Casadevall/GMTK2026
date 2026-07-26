@@ -25,6 +25,8 @@ func _ready() -> void:
 		$markers/silver.visible = true
 	elif score > tiers[3]:
 		$markers/bronze.visible = true
+	elif score == 0:
+		$hint.visible = true
 	#else:
 		#$Panel/CenterContainer/VBox/you_suck.visible = true
 		#$markers/you.visible = true

@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dm3f2v4txo0y3" path="res://entities/assets/images/bg/crashed.png" id="8_fkf4o"]
 [ext_resource type="Texture2D" uid="uid://bx37tyokneqxa" path="res://entities/assets/images/bg/Control_panel.png" id="10_woa3c"]
 [ext_resource type="Texture2D" uid="uid://c7uecfqffa6cb" path="res://entities/assets/images/rocket/ROCKET_Full.png" id="11_ku74v"]
+[ext_resource type="Texture2D" uid="uid://bjfncsin1g6fy" path="res://entities/assets/images/bg/SKY_var1.png" id="12_ku74v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_woa3c"]
 content_margin_left = 0.0
@@ -23,6 +24,11 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_dd2jf"]
+font_size = 27
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.5176471)
 
 [node name="Game Over" type="Node2D" unique_id=464555036]
 script = ExtResource("1_yxx3c")
@@ -64,10 +70,10 @@ centered = false
 
 [node name="Panel" type="Panel" parent="." unique_id=164250093]
 custom_minimum_size = Vector2(320, 360)
-offset_left = 230.0
-offset_top = 276.0
-offset_right = 550.0
-offset_bottom = 636.0
+offset_left = 241.0
+offset_top = 318.0
+offset_right = 561.0
+offset_bottom = 678.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_woa3c")
 
 [node name="CenterContainer" type="CenterContainer" parent="Panel" unique_id=83099023]
@@ -131,7 +137,7 @@ text = "(you):"
 one_shot = true
 
 [node name="Crashed" type="Sprite2D" parent="." unique_id=132956835]
-position = Vector2(389, 169.99998)
+position = Vector2(391.00003, 147)
 rotation = -0.13398103
 texture = ExtResource("8_fkf4o")
 
@@ -185,3 +191,30 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("11_ku74v")
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=788722321]
+
+[node name="hint" type="CenterContainer" parent="." unique_id=2085873311]
+visible = false
+custom_minimum_size = Vector2(800, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = 16.0
+offset_right = 794.0
+offset_bottom = 559.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="hint" unique_id=166573878]
+modulate = Color(1, 0.0627451, 0, 1)
+position = Vector2(399.00003, 273)
+scale = Vector2(0.8999996, 0.06124999)
+texture = ExtResource("12_ku74v")
+
+[node name="Credits" type="Label" parent="hint" unique_id=534568621]
+layout_mode = 2
+text = "Press Space (or click) when the timer hits 0 "
+label_settings = SubResource("LabelSettings_dd2jf")
+horizontal_alignment = 1
