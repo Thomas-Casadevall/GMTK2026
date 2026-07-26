@@ -160,11 +160,12 @@ horizontal_alignment = 1
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=974043744]
 stream = ExtResource("7_ecwwl")
+volume_db = 3.0
 autoplay = true
 
 [node name="Ambience" type="AudioStreamPlayer" parent="." unique_id=856712361]
 stream = ExtResource("8_kk3ma")
-autoplay = true
+volume_db = -2.0
 
 [node name="title" type="Sprite2D" parent="." unique_id=579949479]
 position = Vector2(405, 351)
