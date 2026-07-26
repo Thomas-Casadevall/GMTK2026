@@ -5,7 +5,6 @@
 [ext_resource type="AudioStream" uid="uid://b1rn2x24rjtmi" path="res://entities/assets/audio/sfx/rocket_launch_v1_01.wav" id="3_arqfp"]
 [ext_resource type="AudioStream" uid="uid://cx07bcbgjgade" path="res://entities/assets/audio/sfx/rocket_launch_v1_02.wav" id="4_o2m47"]
 [ext_resource type="AudioStream" uid="uid://deuhku6mb52hx" path="res://entities/assets/audio/sfx/rocket_launch_v1_03.wav" id="5_w35co"]
-[ext_resource type="AudioStream" uid="uid://b7yr2fhuw0iei" path="res://entities/assets/audio/sfx/rocket_launch_v3_04.wav" id="6_jihy5"]
 [ext_resource type="AudioStream" uid="uid://blbl31b58mllh" path="res://entities/assets/audio/sfx/rocket_crash_01.wav" id="7_axhnr"]
 [ext_resource type="AudioStream" uid="uid://dtktsgxj22t0n" path="res://entities/assets/audio/sfx/rocket_crash_02.wav" id="8_1sqx1"]
 [ext_resource type="AudioStream" uid="uid://dye60xm05wxb5" path="res://entities/assets/audio/sfx/rocket_crash_03.wav" id="9_iqmj1"]
@@ -19,11 +18,10 @@
 [ext_resource type="AudioStream" uid="uid://c05wpjr75ks5n" path="res://entities/assets/audio/sfx/amb_heavy_01.wav" id="17_kk652"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lya80"]
-streams_count = 4
+streams_count = 3
 stream_0/stream = ExtResource("3_arqfp")
 stream_1/stream = ExtResource("4_o2m47")
 stream_2/stream = ExtResource("5_w35co")
-stream_3/stream = ExtResource("6_jihy5")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1shtp"]
 streams_count = 4
@@ -47,7 +45,7 @@ bus = &"SFX"
 
 [node name="RocketExplode" type="AudioStreamPlayer" parent="." unique_id=1243282560]
 stream = SubResource("AudioStreamRandomizer_1shtp")
-volume_db = -2.0
+volume_db = -3.0
 bus = &"SFX"
 
 [node name="StartSound" type="AudioStreamPlayer" parent="." unique_id=1855293607]
@@ -62,17 +60,17 @@ bus = &"SFX"
 
 [node name="Perfect" type="AudioStreamPlayer" parent="." unique_id=1389641103]
 stream = ExtResource("13_ms3gr")
-volume_db = 3.0
+volume_db = 2.0
 bus = &"SFX"
 
 [node name="MildPerfect" type="AudioStreamPlayer" parent="." unique_id=504779047]
 stream = ExtResource("14_xvfcm")
-volume_db = 3.0
+volume_db = 2.0
 bus = &"SFX"
 
 [node name="BadTiming" type="AudioStreamPlayer" parent="." unique_id=1707673252]
 stream = ExtResource("15_braak")
-volume_db = 3.0
+volume_db = 2.0
 bus = &"SFX"
 
 [node name="AmbienceGame" type="AudioStreamPlayer" parent="." unique_id=1980874069]
@@ -82,5 +80,5 @@ bus = &"SFX"
 
 [node name="AmbienceMenu" type="AudioStreamPlayer" parent="." unique_id=933309973]
 stream = ExtResource("17_kk652")
-volume_db = -5.0
+volume_db = -8.0
 bus = &"SFX"
