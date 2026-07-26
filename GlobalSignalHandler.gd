@@ -1,6 +1,7 @@
 extends Node
 
 signal rocket_launched
+signal rocket_exploded
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
