@@ -31,8 +31,10 @@ func play_start_sound() -> void:
 		start_sound_has_been_played = true
 
 func play_game_over() -> void:
+	if start_sound.playing:
+		start_sound.stop()
 	game_over.play()
-	start_sound.stop()
+
 
 func play_perfect() -> void:
 	perfect.play()

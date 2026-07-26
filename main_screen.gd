@@ -39,7 +39,6 @@ func add_screen():
 	print("rocket_scene.init_time")
 	rocket_scene.init_time(TOTAL_TIME, 1, fenetre, 4, $beat)
 	rocket_scene.rocket_exploded.connect(on_rocket_crashed)
-	sfx_manager.play_start_sound()
 	#$beat.timeout.connect(rocket_scene.sync)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
