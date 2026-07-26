@@ -4,6 +4,8 @@ var list_space_scenes = []
 
 var MAX_SPACE_PANELS = 16
 
+var MAINCLOCK_TIME:float = 1.0
+
 var main_screen:Node2D
 
 enum PRESSED {

@@ -1,6 +1,7 @@
 extends Node2D
 
-var TOTAL_TIME: float = 5;
+var count_down_window_min: int = 3
+var count_down_window_max: int = 7
 var fenetre: float = 0.2;
 var perfect_fenetre: float = fenetre/3;
 var resize_factor = 1
@@ -30,7 +31,6 @@ func _ready() -> void:
 	
 	$SFXPlayer.stream = start_sound
 	$SFXPlayer.play()
-	
 	add_screen()
 
 func add_screen():
@@ -38,13 +38,19 @@ func add_screen():
 	if rocket_scene == null:
 		return  # No sceen created :(
 	print("rocket_scene.init_time")
-	rocket_scene.init_time(TOTAL_TIME, 1, fenetre, 4, $beat)
+	rocket_scene.init_time(randi_range(count_down_window_min, count_down_window_max), 1, fenetre, 4, $beat)
 	GlobalSignalHandler.rocket_exploded.connect(on_rocket_crashed)
 	sfx_manager.play_start_sound()
 	#$beat.timeout.connect(rocket_scene.sync)
+	
+	# difficulty reset
+	$beat.wait_time = GlobalVariables.MAINCLOCK_TIME
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# difficulty increase
+	#if GlobalVariables.launch_count > 5:
+		#$beat.wait_time = GlobalVariables.MAINCLOCK_TIME * 0.8;
 	pass
 
 func _unhandled_input(event):
