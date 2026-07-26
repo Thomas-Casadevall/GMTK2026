@@ -105,13 +105,11 @@ func sync() -> void:
 		STATE.done:
 			start_construction()
 		STATE.construction:
-			print("new_step construction")
 			rocket_ref.construct_step()
 
-func space_key_pressed() -> bool:
+func space_key_pressed(pressed: GlobalVariables.PRESSED) -> bool:
 	if current_state == STATE.countdown:
-		print(b_countdown.time_left)
-		if b_countdown.time_left < 0.5:
+		if b_countdown.time_left == 0 or (b_countdown.time_left == 1 and pressed == GlobalVariables.PRESSED.before_beat):
 			$Countdown_container/Countdown_label.text = "Launched!"
 			GlobalSignalHandler.emit_signal("rocket_launched")
 			$AnimationPlayer.play("rocket_launch")
