@@ -4,6 +4,8 @@
 [ext_resource type="AudioStream" uid="uid://dbrng7joinw7a" path="res://entities/assets/audio/music/base_track.ogg" id="2_0osx7"]
 [ext_resource type="Texture2D" uid="uid://c62cs0p6r37b0" path="res://entities/assets/icon.svg" id="3_7a4el"]
 [ext_resource type="AudioStream" uid="uid://m7eprgn015nx" path="res://entities/assets/audio/music/playlist_synchronized.tres" id="4_4sclt"]
+[ext_resource type="Texture2D" uid="uid://brn44yud2e3kb" path="res://entities/assets/images/bg/SCREEN.png" id="6_ue4rx"]
+[ext_resource type="Texture2D" uid="uid://ccg34rj2kp1p" path="res://entities/assets/images/bg/BG_Screen.jpg" id="6_ywh4s"]
 [ext_resource type="Script" uid="uid://04sx5ls8xf2s" path="res://layered_audio.gd" id="7_sjiej"]
 
 [sub_resource type="Animation" id="Animation_7a4el"]
@@ -91,5 +93,18 @@ texture = ExtResource("3_7a4el")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1479672747]
 libraries/ = SubResource("AnimationLibrary_4sclt")
+
+[node name="border" type="Sprite2D" parent="." unique_id=1079520518]
+top_level = true
+position = Vector2(399.1388, 399.62897)
+scale = Vector2(0.93864137, 0.94368964)
+texture = ExtResource("6_ue4rx")
+
+[node name="keyboards" type="Sprite2D" parent="." unique_id=985265398]
+top_level = true
+position = Vector2(5, 752)
+scale = Vector2(0.9383155, 0.24210526)
+texture = ExtResource("6_ywh4s")
+centered = false
 
 [connection signal="timeout" from="beat" to="." method="_on_beat_timeout"]

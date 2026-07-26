@@ -92,12 +92,6 @@ texture = ExtResource("5_1shtp")
 centered = false
 script = ExtResource("3_cvb50")
 
-[node name="ground" type="Sprite2D" parent="background" unique_id=1178414617]
-position = Vector2(-2, 667)
-texture = ExtResource("6_umoqg")
-centered = false
-script = ExtResource("3_cvb50")
-
 [node name="mountains" type="Sprite2D" parent="background" unique_id=735172338]
 position = Vector2(0, 196)
 texture = ExtResource("7_jgggg")
@@ -110,13 +104,19 @@ texture = ExtResource("8_apxuq")
 centered = false
 script = ExtResource("3_cvb50")
 
+[node name="ground" type="Sprite2D" parent="background" unique_id=1178414617]
+position = Vector2(-2, 667)
+texture = ExtResource("6_umoqg")
+centered = false
+script = ExtResource("3_cvb50")
+
 [node name="screen_border" type="Sprite2D" parent="background" unique_id=1420199155]
 scale = Vector2(0.94483566, 0.9299883)
 texture = ExtResource("10_ann15")
 centered = false
 
 [node name="ground_pos" type="Marker2D" parent="." unique_id=924667353]
-position = Vector2(399, 524)
+position = Vector2(414, 524)
 
 [node name="Path2D" type="Path2D" parent="ground_pos" unique_id=1759275320]
 position = Vector2(-399, -663)
