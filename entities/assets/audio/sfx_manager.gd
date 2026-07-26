@@ -17,7 +17,7 @@ func on_new_game() -> void:
 	start_sound_has_been_played = false
 
 func play_new_rocket() -> void:
-	new_rocket_sound.play()
+	new_rocket_sound.play() 
 
 func play_rocket_launch() -> void:
 	rocket_launch.play()
