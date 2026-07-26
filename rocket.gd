@@ -3,17 +3,14 @@ extends Node2D
 const SPEED := 800
 
 func _ready() -> void:
+	set_process(false)
 	reset()
 
-func _process(delta: float) -> void:
-	position.y -= SPEED * delta
-	if global_position.y <= -800:
-		set_process(false)
-		position = Vector2.ZERO
-
-func launch() -> void:
-	set_process(true)
-	
 func reset() -> void:
-	set_process(false)
+	$AnimatedSprite2D.visible = false
+	$AnimatedSprite2D.pause()
 	position = Vector2.ZERO
+
+func start_smoke() -> void:
+	$AnimatedSprite2D.visible = true
+	$AnimatedSprite2D.play()
