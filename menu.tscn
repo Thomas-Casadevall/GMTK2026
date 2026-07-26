@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cw1b4se34kfvb" path="res://rocket.tscn" id="6_kk3ma"]
 [ext_resource type="AudioStream" uid="uid://d3mmxbh6rgwfq" path="res://entities/assets/audio/music/menu_music.ogg" id="7_ecwwl"]
 [ext_resource type="AudioStream" uid="uid://c05wpjr75ks5n" path="res://entities/assets/audio/sfx/amb_heavy_01.wav" id="8_kk3ma"]
-[ext_resource type="Texture2D" uid="uid://cs7jqamqc1t2d" path="res://entities/assets/images/menu/towerdecontrole.png" id="9_nrnbx"]
+[ext_resource type="Texture2D" uid="uid://ddt8whj1e8boc" path="res://entities/assets/images/menu/towerdecontrole.png" id="9_nrnbx"]
 
 [sub_resource type="Animation" id="Animation_cvb50"]
 tracks/0/type = "value"
@@ -84,6 +84,11 @@ point_count = 12
 font_size = 22
 shadow_size = 8
 shadow_color = Color(0, 0, 0, 0.5176471)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rh3xb"]
+font_size = 50
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.3372549)
 
 [node name="Menu" type="Control" unique_id=1953338222]
 layout_mode = 3
@@ -178,3 +183,12 @@ volume_db = -2.0
 position = Vector2(405, 351)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("9_nrnbx")
+
+[node name="Label" type="Label" parent="." unique_id=946747642]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 32.0
+offset_right = 663.0
+offset_bottom = 101.0
+text = "Press space to space !"
+label_settings = SubResource("LabelSettings_rh3xb")
