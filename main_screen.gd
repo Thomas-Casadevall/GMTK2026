@@ -43,17 +43,15 @@ func add_screen():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# difficulty increase
-	#if GlobalVariables.launch_count > 5:
-		#$beat.wait_time = GlobalVariables.MAINCLOCK_TIME * 0.8;
-	pass
+	if Input.is_action_just_released("primary_input"):
+		$Sprite2D2.texture = unpressed_space
 
-func _unhandled_input(event):
-	if event is InputEventKey:
-		if $mini_wait.time_left != 0:
-			return
-		var best_launch = null
-		if event.pressed and event.keycode == KEY_SPACE:
+func _input(event):
+	if $mini_wait.time_left != 0:
+		return
+	var best_launch = null
+	if event is InputEventKey or event is InputEventMouseButton:
+		if event.is_action_pressed("primary_input"):
 			$Sprite2D2.texture = pressed_space
 			var at_least_one_launched:bool = false;
 			# si c'est dans la fenetre on balance au scenes filles
@@ -85,7 +83,7 @@ func _unhandled_input(event):
 						
 					# if there is no perfect launch timing, set the state to timing
 					# (GlobalVariables.PRESSED.after_beat or GlobalVariables.PRESSED.before_beat)
-#					elif best_launch != GlobalVariables.PRESSED.perfect_before and best_launch != GlobalVariables.PRESSED.perfect_after:
+	#					elif best_launch != GlobalVariables.PRESSED.perfect_before and best_launch != GlobalVariables.PRESSED.perfect_after:
 					elif timing == GlobalVariables.PRESSED.before_beat:
 						if best_launch != GlobalVariables.PRESSED.perfect_before and best_launch != GlobalVariables.PRESSED.perfect_after:
 							best_launch = timing
@@ -111,8 +109,7 @@ func _unhandled_input(event):
 					
 					
 				
-		elif event.is_released() and event.keycode == KEY_SPACE:
-			$Sprite2D2.texture = unpressed_space
+
 
 func on_rocket_launched(pressed: GlobalVariables.PRESSED):
 	print("LAUNCHED")
