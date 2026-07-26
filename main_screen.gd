@@ -33,7 +33,7 @@ func add_screen():
 	if rocket_scene == null:
 		return  # No sceen created :(
 	print("rocket_scene.init_time")
-	rocket_scene.init_time(TOTAL_TIME, 1, fenetre, 4, $beat)
+	rocket_scene.init_time(randi_range(count_down_window_min, count_down_window_max), 1, fenetre, 4, $beat)
 	rocket_scene.rocket_exploded.connect(on_rocket_crashed)
 #	sfx_manager.play_start_sound()
 	#$beat.timeout.connect(rocket_scene.sync)
