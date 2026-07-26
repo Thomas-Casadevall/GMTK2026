@@ -23,6 +23,7 @@ func _ready() -> void:
 	GlobalVariables.list_space_scenes = []
 	GlobalWindowsHandler.available_panels = []
 	GlobalWindowsHandler.taken_panels = []
+	GlobalVariables.launch_count = 0;
 	GlobalSignalHandler.rocket_launched.connect(on_rocket_launched)	
 	GlobalWindowsHandler.available_panels.append(self)
 	GlobalVariables.main_screen = self
